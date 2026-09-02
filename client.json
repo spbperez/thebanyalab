@@ -1,0 +1,246 @@
+{
+  "_note": "Единственный источник данных. Ни одной цифры мимо этого файла. null = ещё не получено от владельца; сборка на нём падает.",
+
+  "business": {
+    "name": "The Banya Lab",
+    "gbpName": null,
+    "legalName": null,
+    "tagline": "Heat. Water. Silence. Renew.",
+    "oneLine": "Authentic Russian banya. Not a sauna.",
+    "shortDescription": "Banya is the Russian heat ritual — a thousand years old, practiced by masters with oak branches, wet steam and cold water. We brought it to Hawaii.",
+    "phone": null,
+    "phoneDisplay": null,
+    "email": null,
+    "instagram": "https://instagram.com/banya_lab_hawaii",
+    "gbpUrl": null,
+    "reviewsUrl": null,
+    "domain": null,
+    "showPhoneInHeader": false,
+    "showAddress": false,
+    "baseLocation": "Ala Wai Harbor, Honolulu",
+    "address": { "street": null, "city": "Honolulu", "state": "HI", "zip": null, "country": "US" },
+    "areaServed": ["Honolulu", "Oahu"],
+    "hours": null,
+    "foundedYear": null,
+    "priceRange": "$$$",
+    "schemaType": "HealthAndBeautyBusiness"
+  },
+
+  "hero": {
+    "line": "You are not sitting in a room.",
+    "sub": "You are worked on.",
+    "body": "Banya is the Russian heat ritual — a thousand years old, practiced by masters with oak branches, wet steam and cold water. A sailing vessel in Ala Wai Harbor is where we hold it."
+  },
+
+  "manifesto": [
+    "We do not sell sauna.",
+    "We do not sell relaxation.",
+    "We do not sell wellness.",
+    "We sell a reset of the nervous system.",
+    "The silence that comes after the heat.",
+    "The version of you that forgot how to breathe."
+  ],
+
+  "lab": {
+    "title": "The Lab",
+    "body": [
+      "Most banyas abroad replicate a fixed template — the same parilka, the same temperature, the same protocol, every time. We respect the tradition, and we do not stop there.",
+      "In a country the size of Russia the ritual split into hundreds of local variations — Siberian, Altai, Karelian, Ural, village traditions that never reached a textbook. Our masters come from that living tradition and keep working inside it. We read old practitioner notes. We travel back to masters who carry local knowledge. We test, we keep what works, we discard what does not.",
+      "That is what Lab means. Same ancient foundation. Active experimentation on top of it."
+    ]
+  },
+
+  "rituals": [
+    {
+      "slug": "lab-session",
+      "name": "The Lab Session",
+      "stage": "A sailing vessel in Ala Wai Harbor",
+      "summary": "The full ritual, held at the dock. Small group, four rounds, two hours.",
+      "flow": [
+        "Arrival — phones surrendered, tea, silence.",
+        "First round — gentle heat, the body adapts.",
+        "Par — the master works the body with venik.",
+        "Cold — plunge or cold water poured over you.",
+        "Rest — on deck, in silence.",
+        "Repeat — three to four rounds in total.",
+        "Afterglow — tea, water, no conversation."
+      ],
+      "duration": "About 2 hours",
+      "capacity": "1 to 4 guests",
+      "prices": [
+        { "label": "With Master Yura", "amount": "$175", "unit": "per person" },
+        { "label": "With Master Max — the Signature Reset", "amount": "$250", "unit": "per person" }
+      ],
+      "minimum": "$600 minimum per session. One or two guests cover it together."
+    },
+    {
+      "slug": "ocean-session",
+      "name": "The Ocean Session",
+      "stage": "Under sail, open Pacific",
+      "summary": "The same ritual, taken out of the harbour. The cold plunge becomes the ocean.",
+      "flow": [
+        "The vessel leaves the harbour — movement becomes part of the ritual.",
+        "The same four rounds of heat and venik.",
+        "The plunge is the open Pacific — deeper, saltier, colder than any tub.",
+        "Between rounds — live sound: singing bowls, hang drum. Never speakers.",
+        "Silence during par. Conversation only in the afterglow.",
+        "Sunset or night. The light works with the ritual."
+      ],
+      "duration": "About 3 hours",
+      "capacity": "4 to 5 guests",
+      "prices": [
+        { "label": "Private outing", "amount": "$1,000–1,200", "unit": "for the group" }
+      ],
+      "minimum": "By application. Members of the Lab first.",
+      "isNot": [
+        "Not a booze cruise. No alcohol during the ritual.",
+        "Not a party. No dancing, no speakers, no crowd.",
+        "Not a tourist experience. We do not take walk-ins.",
+        "Not a photo shoot. Phones are surrendered at boarding."
+      ]
+    }
+  ],
+
+  "masters": [
+    {
+      "name": "Max",
+      "role": "Founder & Head Master",
+      "from": "Russia",
+      "body": "Twelve years in the craft, trained across several Russian schools, still refining. The Signature Reset is his: deep transformation through hard contrast. Aggressive, precise, uncompromising. For those who need to break something inside to come back whole.",
+      "photo": null
+    },
+    {
+      "name": "Yura",
+      "role": "Master",
+      "from": "Ukraine",
+      "body": "The jeweller. Reads the state of the guest exactly — breath, skin, posture — and balances the steam on the edge of what a body will take. The full depth of the ritual, delivered with surgical care.",
+      "photo": null
+    }
+  ],
+
+  "guild": "Our masters are Russian and Ukrainian. They share a craft older than any border. We honour the craft, not any state, and we say that openly.",
+
+  "access": [
+    { "title": "Apply, do not book", "body": "There are no walk-ins and no open calendar. Every session starts with a message. The application is a filter that protects both sides." },
+    { "title": "Digital surrender", "body": "Phones are collected at boarding. Not suggested — required. Without it the nervous system does not let go." },
+    { "title": "The invitation", "body": "Proven members hold a wooden token that lets them bring one person in. It cannot be bought. The club grows by trust or it does not grow." }
+  ],
+
+  "comparison": {
+    "title": "Banya is not a sauna",
+    "note": "Most Americans picture the cedar box at the gym. That runs at 150–175°F and often bans water on the stones outright. Here is the actual difference.",
+    "columns": ["US gym sauna", "Finnish sauna", "Russian banya"],
+    "rows": [
+      { "label": "Temperature", "values": ["150–175°F", "175–200°F", "180–210°F"] },
+      { "label": "Humidity", "values": ["~5%", "10–20%", "50–60%"] },
+      { "label": "Water on stones", "values": ["Often banned", "Yes — löyly", "Yes, plentiful"] },
+      { "label": "Tool", "values": ["None", "Sometimes vihta", "Venik — oak or birch"] },
+      { "label": "Attendant", "values": ["None", "None", "A master works on you"] },
+      { "label": "Duration", "values": ["10–15 min", "15–20 min", "2 hours, several rounds"] },
+      { "label": "After", "values": ["Shower", "Cold pour or lake", "Cold plunge or ocean"] },
+      { "label": "Purpose", "values": ["A quick sweat", "Heat the body", "Reset the nervous system"] }
+    ]
+  },
+
+  "vocabulary": [
+    { "term": "Banya", "meaning": "The ritual itself. Never sauna, never steam room, never bathhouse." },
+    { "term": "Par", "meaning": "The act of working the body with steam and venik. The verb and the craft." },
+    { "term": "Venik", "meaning": "A bundle of fresh oak or birch branches, used by the master." },
+    { "term": "Master", "meaning": "Never attendant, never therapist. The master leads the ritual." },
+    { "term": "Afterglow", "meaning": "The state afterwards. What people come back for." }
+  ],
+
+  "answers": [
+    {
+      "slug": "is-banya-the-same-as-a-sauna",
+      "question": "Is a banya the same as a sauna?",
+      "short": "No. A sauna is Finnish, dry and silent — you sit in it. A banya is Russian, wet and alive — you are worked on.",
+      "body": [
+        "A Finnish sauna runs 175–200°F at low humidity, and you sit in it alone. A Russian banya runs 180–210°F at 50–60% humidity, and a master moves the steam across your body with a bundle of fresh oak branches called a venik.",
+        "The American gym sauna is a third thing again: 150–175°F, almost no humidity, and water on the stones is often banned outright for liability reasons. Most people in Hawaii have never experienced either real tradition.",
+        "The practical difference is that a banya is done to you, in rounds, over about two hours, with cold water between them. A sauna is something you sit in for fifteen minutes."
+      ],
+      "updated": "2026-09-02"
+    },
+    {
+      "slug": "what-happens-in-a-session",
+      "question": "What actually happens in a session?",
+      "short": "Four rounds of heat, venik and cold water over about two hours, led by a master, in silence.",
+      "body": [
+        "You arrive, hand over your phone, drink tea and stop talking. The first round is gentle — the body needs to adapt before anything is done to it.",
+        "In the second round the master works you with the venik: steam is pushed along the body, held, released. This is par, and it is the centre of the ritual. Then cold — a plunge, or cold water poured over you — and then rest on deck, in silence.",
+        "That cycle repeats three to four times. It ends with tea and no conversation. Most people are quiet for an hour afterwards. That part is called the afterglow, and it is what people come back for."
+      ],
+      "updated": "2026-09-02"
+    },
+    {
+      "slug": "how-hot-is-it-and-is-it-safe",
+      "question": "How hot is it, and is it safe?",
+      "short": "The air holds 180–210°F, but you are never left alone in it, and every round ends before it needs to.",
+      "body": [
+        "The heat is real and the humidity is high, which makes it feel far stronger than a dry sauna at the same temperature. That is the point — the contrast between hot and cold is the mechanism.",
+        "You are not in there by yourself. The master reads breath, skin and posture through the whole round and adjusts the steam and the pressure of the venik to what your body is actually taking. Rounds are short. You leave the heat before you want to, not after.",
+        "Heat and cold contrast puts load on the heart. If you are pregnant, have a heart condition or blood pressure that is being managed, or you are on medication that affects how you handle heat, ask your doctor first and tell the master before the session. We would rather have that conversation at the dock than in the parilka."
+      ],
+      "updated": "2026-09-02"
+    },
+    {
+      "slug": "what-do-i-bring",
+      "question": "What do I bring, and what happens to my phone?",
+      "short": "Swimwear, a towel and nothing else. Phones are collected at boarding and returned at the end.",
+      "body": [
+        "Bring swimwear and a towel. Slippers if you like. Everything used in the ritual — veniks, tea, cold water — is ours.",
+        "Phones are surrendered at boarding. This is required, not suggested. The reset does not happen while a device is in the room, and no one relaxes while someone else might be filming.",
+        "Eat lightly beforehand and drink water through the day. No alcohol before or during the ritual."
+      ],
+      "updated": "2026-09-02"
+    },
+    {
+      "slug": "how-do-i-book-and-pay",
+      "question": "How do I book, and how do I pay?",
+      "short": "Send an application through this site. A master replies, confirms a date with you, and sends a payment link from the business — card, receipt, no cash in an envelope.",
+      "body": [
+        "There is no open calendar on this site, on purpose. Sessions are small, the masters are few, and the ocean has an opinion about the schedule. So you send an application with roughly when suits you and how many of you there are, and a master comes back to you with a time.",
+        "Once the time is agreed you get a payment link. It is a card payment to the business, it produces a real receipt, and you can pay for yourself and for the people you are bringing in one go. Nothing is charged before a human has confirmed your date.",
+        "If you want to give a session to someone else, say so in the application and we will send the same link with a note instead of a date."
+      ],
+      "updated": "2026-09-02"
+    }
+  ],
+
+  "apply": {
+    "title": "Apply",
+    "intro": "Tell us who you are and roughly when suits you. A master replies to arrange the date. Nothing is charged until you have agreed it.",
+    "fields": {
+      "name": "Your name",
+      "phone": "Phone",
+      "email": "Email",
+      "people": "How many people",
+      "when": "When suits you",
+      "message": "Anything we should know"
+    },
+    "consent": "We use this to reply to you about a session. Nothing else.",
+    "submit": "Send application"
+  },
+
+  "pay": {
+    "title": "Payment",
+    "intro": "This page is for guests whose date is already confirmed. Payment goes to the business and produces a receipt.",
+    "links": [],
+    "note": "If you have not spoken to a master yet, start with an application."
+  },
+
+  "thanks": {
+    "title": "Received",
+    "body": "A master will come back to you shortly to arrange a date. Nothing is charged until you have agreed it."
+  },
+
+  "seo": {
+    "titleSuffix": "Authentic Russian Banya · Honolulu",
+    "description": "Authentic Russian banya in Honolulu — the thousand-year-old heat ritual, held by masters on a sailing vessel in Ala Wai Harbor. Not a sauna."
+  },
+
+  "licenses": [],
+
+  "aiCrawlers": ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-Web", "PerplexityBot", "Google-Extended", "CCBot", "Applebot-Extended"]
+}

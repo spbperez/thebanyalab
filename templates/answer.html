@@ -1,0 +1,11 @@
+{{> _head}}
+<article class="prose">
+  <p class="crumb"><a href="/answers/">Answers</a></p>
+  <h1>{{answer.question}}</h1>
+  <p class="short-answer">{{answer.short}}</p>
+  {{#each answer.body}}<p>{{this}}</p>
+  {{/each}}
+  <p class="quiet">Updated {{answer.updated}}</p>
+  <p class="actions"><a class="btn" href="/apply/">Apply for a session</a></p>
+</article>
+{{> _footer}}

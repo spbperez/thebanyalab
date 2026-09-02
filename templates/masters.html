@@ -1,0 +1,17 @@
+{{> _head}}
+<section class="page-head">
+  <h1>The masters</h1>
+  <p class="lead">A brand can be copied. A venik can be ordered. A boat can be bought. A master cannot be replicated.</p>
+</section>
+{{#each masters}}
+<section class="band">
+  <h2>{{name}}</h2>
+  <p class="quiet">{{role}} · from {{from}}</p>
+  <p>{{body}}</p>
+</section>
+{{/each}}
+<section class="band">
+  <p class="lead">{{guild}}</p>
+  <p class="actions"><a class="btn" href="/apply/">Apply for a session</a></p>
+</section>
+{{> _footer}}

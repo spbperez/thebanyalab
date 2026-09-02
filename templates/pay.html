@@ -1,0 +1,10 @@
+{{> _head}}
+<section class="page-head">
+  <h1>{{pay.title}}</h1>
+  <p class="lead">{{pay.intro}}</p>
+</section>
+<section class="band">
+  <ul class="prices">{{#each pay.links}}<li><a class="btn" href="{{url}}" rel="noopener">{{label}}</a> <span class="quiet">{{note}}</span></li>{{/each}}</ul>
+  <p class="quiet">{{pay.note}} <a href="/apply/">Apply</a>.</p>
+</section>
+{{> _footer}}

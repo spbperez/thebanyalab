@@ -1,0 +1,16 @@
+{
+  "_note": "Цифры, подтверждённые источником. check.mjs сверяет, что они не разошлись с client.json. Меняются только вместе с источником.",
+  "source": "banya_lab_brand_concept_v3, владелец, 2026",
+  "confirmedOn": "2026-09-02",
+  "figures": [
+    { "what": "Lab session, Master Yura, per person", "value": "$175" },
+    { "what": "Lab session, Master Max, per person", "value": "$250" },
+    { "what": "Lab session minimum", "value": "$600" },
+    { "what": "Ocean session, per group", "value": "$1,000–1,200" },
+    { "what": "Banya air temperature", "value": "180–210°F" },
+    { "what": "Banya humidity", "value": "50–60%" },
+    { "what": "Lab session duration", "value": "About 2 hours" },
+    { "what": "Lab session capacity", "value": "1 to 4 guests" },
+    { "what": "Ocean session capacity", "value": "4 to 5 guests" }
+  ]
+}

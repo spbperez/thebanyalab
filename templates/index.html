@@ -1,0 +1,57 @@
+{{> _head}}
+<section class="hero">
+  <div class="ember" aria-hidden="true"></div>
+  <h1>{{hero.line}}<br><em>{{hero.sub}}</em></h1>
+  <p class="lead">{{hero.body}}</p>
+  <p class="actions"><a class="btn" href="/apply/">Apply for a session</a></p>
+</section>
+
+<section class="band manifesto">
+  {{#each manifesto}}<p>{{this}}</p>
+  {{/each}}
+</section>
+
+<section class="band">
+  <h2>{{comparison.title}}</h2>
+  <p class="lead">{{comparison.note}}</p>
+  <div class="table-scroll">
+    <table class="compare">
+      <thead><tr><th scope="col"></th>{{#each comparison.columns}}<th scope="col">{{this}}</th>{{/each}}</tr></thead>
+      <tbody>
+        {{#each comparison.rows}}<tr><th scope="row">{{label}}</th>{{#each values}}<td>{{this}}</td>{{/each}}</tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="band">
+  <h2>{{lab.title}}</h2>
+  {{#each lab.body}}<p>{{this}}</p>
+  {{/each}}
+</section>
+
+<section class="band">
+  <h2>The two rituals</h2>
+  <div class="pair">
+    {{#each rituals}}
+    <article>
+      <h3><a href="/ritual/#{{slug}}">{{name}}</a></h3>
+      <p class="quiet">{{stage}}</p>
+      <p>{{summary}}</p>
+    </article>
+    {{/each}}
+  </div>
+</section>
+
+<section class="band">
+  <h2>How access works</h2>
+  {{#each access}}
+  <div class="rule">
+    <h3>{{title}}</h3>
+    <p>{{body}}</p>
+  </div>
+  {{/each}}
+  <p class="actions"><a class="btn" href="/apply/">Apply</a></p>
+</section>
+{{> _footer}}

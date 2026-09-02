@@ -1,0 +1,28 @@
+{{> _head}}
+<section class="page-head">
+  <h1>The two rituals</h1>
+  <p class="lead">Both are banya. Heat, venik, cold, silence. What changes is the stage, not the essence.</p>
+</section>
+
+{{#each rituals}}
+<section class="band" id="{{slug}}">
+  <h2>{{name}}</h2>
+  <p class="quiet">{{stage}}</p>
+  <p class="lead">{{summary}}</p>
+
+  <h3>The flow</h3>
+  <ol class="flow">{{#each flow}}<li>{{this}}</li>{{/each}}</ol>
+
+  <h3>What it costs</h3>
+  <ul class="prices">{{#each prices}}<li><span class="amount">{{amount}}</span> <span class="quiet">{{unit}}</span> — {{label}}</li>{{/each}}</ul>
+  <p class="quiet">{{minimum}}</p>
+  <p class="quiet">{{duration}} · {{capacity}}</p>
+</section>
+{{/each}}
+
+<section class="band">
+  <h2>The words we use</h2>
+  <dl class="vocab">{{#each vocabulary}}<dt>{{term}}</dt><dd>{{meaning}}</dd>{{/each}}</dl>
+  <p class="actions"><a class="btn" href="/apply/">Apply for a session</a></p>
+</section>
+{{> _footer}}

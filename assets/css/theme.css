@@ -1,0 +1,186 @@
+/* The Banya Lab — единственный файл, который правится под клиента визуально.
+   Решение и запреты: docs/DESIGN.md */
+
+:root{
+  --ink:#0A0A0A;
+  --wood-dark:#3D2817;
+  --wood:#8B5A2B;
+  --ember:#C49A5C;
+  --steam:#F5F0E6;
+  --ocean:#1B3A52;
+
+  --hair:rgba(196,154,92,.18);
+  --dim:rgba(245,240,230,.62);
+
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --sans:system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+
+  --measure:64ch;
+  --gap:clamp(3.5rem,9vw,7rem);
+  --pad:clamp(1.25rem,5vw,3rem);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--ink);color:var(--steam);
+  font:400 1.0625rem/1.7 var(--sans);
+  letter-spacing:.005em;
+  overflow-x:hidden;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--ember);text-decoration:none;border-bottom:1px solid rgba(196,154,92,.35)}
+a:hover{border-bottom-color:var(--ember)}
+:focus-visible{outline:2px solid var(--ember);outline-offset:3px}
+
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:var(--pad);top:.75rem;background:var(--ink);padding:.5rem .75rem;z-index:10}
+
+/* ---------- шапка ---------- */
+header.site{
+  display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  padding:1.25rem var(--pad);border-bottom:1px solid var(--hair);
+}
+.wordmark{
+  font:400 1rem/1 var(--serif);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--steam);border:0;
+}
+header.site nav{display:flex;gap:clamp(.9rem,3vw,1.75rem);font-size:.875rem}
+header.site nav a{color:var(--dim);border:0;letter-spacing:.06em}
+header.site nav a:hover{color:var(--steam)}
+header.site nav a.cta{color:var(--ember)}
+
+/* ---------- первый экран: одна печь ---------- */
+.hero{
+  position:relative;padding:clamp(4rem,16vh,9rem) var(--pad) var(--gap);
+  min-height:min(78svh,720px);display:flex;flex-direction:column;justify-content:center;
+  overflow:hidden;
+}
+.ember{
+  position:absolute;left:-20%;bottom:-45%;width:min(150vw,1100px);aspect-ratio:1;
+  background:radial-gradient(circle at 50% 50%,
+    rgba(196,154,92,.30) 0%,
+    rgba(139,90,43,.20) 28%,
+    rgba(61,40,23,.16) 48%,
+    transparent 68%);
+  pointer-events:none;
+}
+.hero>*{position:relative}
+.hero h1{
+  margin:0;max-width:14ch;
+  font:400 clamp(2.75rem,11vw,6.5rem)/.95 var(--serif);
+  letter-spacing:-.025em;
+}
+.hero h1 em{font-style:italic;color:var(--ember)}
+.lead{max-width:var(--measure);color:var(--dim);font-size:1.125rem;margin:1.75rem 0 0}
+.hero .lead{margin-top:2rem}
+
+/* ---------- секции ---------- */
+.band,.page-head,.prose{padding:var(--gap) var(--pad);max-width:none}
+.band,.prose{border-top:1px solid var(--hair)}
+.band>*,.page-head>*,.prose>*{max-width:var(--measure)}
+.page-head{padding-bottom:0}
+h2{font:400 clamp(1.75rem,4.5vw,2.75rem)/1.1 var(--serif);letter-spacing:-.015em;margin:0 0 1.25rem}
+h3{font:400 1.25rem/1.3 var(--serif);letter-spacing:-.01em;margin:2rem 0 .5rem}
+.page-head h1,.prose h1{font:400 clamp(2.25rem,7vw,4rem)/1.02 var(--serif);letter-spacing:-.02em;margin:0}
+p{margin:0 0 1.15rem}
+.quiet{color:var(--dim);font-size:.9375rem}
+
+.manifesto p{
+  font:400 clamp(1.375rem,4vw,2rem)/1.35 var(--serif);
+  max-width:22ch;margin:0 0 .35rem;
+}
+.manifesto p:nth-child(4){margin-top:2rem;color:var(--ember)}
+
+.actions{margin-top:2.5rem}
+.btn{
+  display:inline-block;border:1px solid var(--ember);color:var(--ember);
+  padding:.85rem 1.6rem;font:400 .9375rem/1 var(--sans);letter-spacing:.08em;
+  text-transform:uppercase;background:transparent;cursor:pointer;
+  transition:background .18s ease,color .18s ease;
+}
+.btn:hover{background:var(--ember);color:var(--ink)}
+
+/* ---------- таблица: страница из справочника ---------- */
+.table-scroll{overflow-x:auto;max-width:100%;margin-top:2rem}
+table.compare{border-collapse:collapse;min-width:36rem;font-size:.9375rem}
+table.compare th,table.compare td{
+  text-align:left;padding:.7rem 1.25rem .7rem 0;border-bottom:1px solid var(--hair);
+  vertical-align:top;
+}
+table.compare thead th{
+  color:var(--dim);font-weight:400;font-size:.8125rem;letter-spacing:.08em;
+  text-transform:uppercase;padding-bottom:.9rem;
+}
+table.compare thead th:last-child{color:var(--ember)}
+table.compare tbody th{color:var(--dim);font-weight:400;white-space:nowrap}
+table.compare td{font-variant-numeric:tabular-nums}
+table.compare td:last-child{color:var(--steam)}
+
+/* ---------- списки ---------- */
+.flow{counter-reset:step;list-style:none;padding:0;margin:1rem 0 0}
+.flow li{counter-increment:step;padding:.55rem 0 .55rem 3rem;position:relative;border-bottom:1px solid var(--hair)}
+.flow li::before{
+  content:counter(step,decimal-leading-zero);position:absolute;left:0;top:.6rem;
+  color:var(--wood);font:400 .8125rem/1 var(--sans);letter-spacing:.1em;
+}
+.prices{list-style:none;padding:0;margin:1rem 0 1.5rem}
+.prices li{padding:.6rem 0;border-bottom:1px solid var(--hair)}
+.amount{font:400 1.375rem/1 var(--serif);color:var(--ember);font-variant-numeric:tabular-nums}
+
+.vocab{margin:1rem 0 0}
+.vocab dt{font:400 1.0625rem/1.4 var(--serif);color:var(--ember);margin-top:1.25rem}
+.vocab dd{margin:.25rem 0 0;color:var(--dim)}
+
+.pair{display:grid;gap:2.5rem;margin-top:1rem}
+.pair h3{margin-top:0}
+.pair h3 a{border:0}
+.rule{border-top:1px solid var(--hair);padding-top:1.25rem;margin-top:1.75rem}
+.rule h3{margin-top:0}
+
+.answer-list{list-style:none;padding:0;margin:0}
+.answer-list li{border-bottom:1px solid var(--hair);padding:1.75rem 0}
+.answer-list li:first-child{padding-top:0}
+.answer-list h2{font-size:clamp(1.25rem,3.5vw,1.625rem);margin-bottom:.5rem}
+.answer-list h2 a{border:0}
+.answer-list p{color:var(--dim);margin:0}
+
+.crumb{font-size:.8125rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.5rem}
+.crumb a{border:0;color:var(--dim)}
+.short-answer{
+  font:400 clamp(1.25rem,3.2vw,1.625rem)/1.45 var(--serif);
+  color:var(--ember);max-width:34ch;margin:1.75rem 0 2.25rem;
+}
+
+/* ---------- форма ---------- */
+form.apply{max-width:34rem;margin-top:1rem}
+form.apply label{display:block;font-size:.8125rem;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-bottom:.4rem}
+form.apply input,form.apply textarea{
+  width:100%;background:transparent;color:var(--steam);
+  border:1px solid var(--hair);border-radius:0;padding:.75rem .85rem;
+  font:400 1rem/1.5 var(--sans);
+}
+form.apply input:focus,form.apply textarea:focus{border-color:var(--ember);outline:none}
+form.apply textarea{resize:vertical}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* ---------- подвал ---------- */
+footer.site{border-top:1px solid var(--hair);padding:var(--gap) var(--pad) 3rem}
+.f-grid{display:grid;gap:2.5rem}
+.f-grid p{margin:0 0 .4rem;font-size:.9375rem}
+.f-name{font:400 1rem/1 var(--serif);letter-spacing:.14em;text-transform:uppercase}
+.f-grid a{color:var(--dim);border:0}
+.f-grid a:hover{color:var(--ember)}
+.f-legal{margin-top:3rem;font-size:.8125rem}
+
+/* ---------- шире телефона ---------- */
+@media (min-width:52rem){
+  .pair{grid-template-columns:1fr 1fr;gap:3.5rem}
+  .f-grid{grid-template-columns:2fr 1fr 1fr;gap:3rem}
+  .vocab dt{float:left;width:9rem;margin-top:1.25rem}
+  .vocab dd{margin-left:9rem}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}

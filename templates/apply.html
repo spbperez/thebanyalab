@@ -1,0 +1,32 @@
+{{> _head}}
+<section class="page-head">
+  <h1>{{apply.title}}</h1>
+  <p class="lead">{{apply.intro}}</p>
+</section>
+<section class="band">
+  <form class="apply" method="POST" action="/api/lead">
+    <p class="hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></p>
+
+    <p><label for="f-name">{{apply.fields.name}}</label>
+      <input id="f-name" name="name" type="text" autocomplete="name" required maxlength="80"></p>
+
+    <p><label for="f-phone">{{apply.fields.phone}}</label>
+      <input id="f-phone" name="phone" type="tel" autocomplete="tel" required maxlength="30" inputmode="tel"></p>
+
+    <p><label for="f-email">{{apply.fields.email}}</label>
+      <input id="f-email" name="email" type="email" autocomplete="email" required maxlength="120"></p>
+
+    <p><label for="f-people">{{apply.fields.people}}</label>
+      <input id="f-people" name="people" type="number" min="1" max="8" step="1" required></p>
+
+    <p><label for="f-when">{{apply.fields.when}}</label>
+      <input id="f-when" name="when" type="text" required maxlength="120" placeholder="Next week, evenings"></p>
+
+    <p><label for="f-message">{{apply.fields.message}}</label>
+      <textarea id="f-message" name="message" rows="4" maxlength="1200"></textarea></p>
+
+    <p class="quiet">{{apply.consent}}</p>
+    <p><button class="btn" type="submit">{{apply.submit}}</button></p>
+  </form>
+</section>
+{{> _footer}}

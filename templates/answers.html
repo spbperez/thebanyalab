@@ -1,0 +1,16 @@
+{{> _head}}
+<section class="page-head">
+  <h1>Answers</h1>
+  <p class="lead">What people ask before their first banya. Answered directly.</p>
+</section>
+<section class="band">
+  <ul class="answer-list">
+  {{#each answers}}
+    <li>
+      <h2><a href="/answers/{{slug}}/">{{question}}</a></h2>
+      <p>{{short}}</p>
+    </li>
+  {{/each}}
+  </ul>
+</section>
+{{> _footer}}
