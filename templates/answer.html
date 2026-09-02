@@ -5,6 +5,7 @@
   <p class="short-answer">{{answer.short}}</p>
   {{#each answer.body}}<p>{{this}}</p>
   {{/each}}
+  {{#each answer.sources}}<p class="src">Source: <a href="{{url}}" rel="noopener nofollow">{{title}}</a></p>{{/each}}
   <p class="quiet">Updated {{answer.updated}}</p>
   <p class="actions"><a class="btn" href="/apply/">Apply for a session</a></p>
 </article>

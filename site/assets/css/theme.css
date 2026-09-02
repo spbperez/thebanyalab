@@ -200,3 +200,6 @@ figure img{width:100%;object-fit:cover;filter:saturate(.92)}
 .gallery-band>.gallery{max-width:none}
 @media (min-width:40rem){ .gallery{grid-template-columns:1fr 1fr} }
 @media (min-width:64rem){ .gallery{grid-template-columns:repeat(3,1fr)} }
+.src{font-size:.875rem;color:var(--dim);margin:.25rem 0}
+.src a{color:var(--dim)}
+.src a:hover{color:var(--ember)}
