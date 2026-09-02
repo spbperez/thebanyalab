@@ -5,6 +5,7 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "build:draft": "node scripts/build.mjs --draft",
-    "check": "node scripts/check.mjs"
+    "check": "node scripts/check.mjs",
+    "preview": "node scripts/preview.mjs"
   }
 }
