@@ -23,12 +23,20 @@ const routeOf = f => {
   return '/' + rel
 }
 
+// картинки вшиваются как data-URI: файл открывается сам по себе, без сервера
+const inline = html => html.replace(/\/assets\/img\/([\w-]+)\.jpg/g, (m, name) => {
+  const small = p('assets/img/' + name.replace(/-640$/, '') + '-640.jpg')
+  const file = fs.existsSync(small) ? small : p('assets/img/' + name + '.jpg')
+  if (!fs.existsSync(file)) return m
+  return 'data:image/jpeg;base64,' + fs.readFileSync(file).toString('base64')
+})
+
 const pages = files.map(f => {
   const html = fs.readFileSync(f, 'utf8')
   const body = html.slice(html.indexOf('<body>') + 6, html.lastIndexOf('</body>'))
     .replace(/<a class="skip"[\s\S]*?<\/a>/, '')
   const title = (html.match(/<title>([\s\S]*?)<\/title>/) || [, ''])[1]
-  return { route: routeOf(f), title, body }
+  return { route: routeOf(f), title, body: inline(body) }
 }).sort((a, b) => a.route.length - b.route.length || a.route.localeCompare(b.route))
 
 const css = fs.readFileSync(p('assets/css/theme.css'), 'utf8')
