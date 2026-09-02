@@ -1,68 +1,71 @@
 {{> _head}}
 <section class="hero">
-  <div class="ember" aria-hidden="true"></div>
-  <h1>{{hero.line}}<br><em>{{hero.sub}}</em></h1>
-  <p class="lead">{{hero.body}}</p>
-  <p class="actions"><a class="btn" href="/apply/">Apply for a session</a></p>
+  <img src="{{hero.photo.src}}" srcset="{{hero.photo.small}} 640w, {{hero.photo.src}} 1170w" sizes="100vw" alt="{{hero.photo.alt}}" fetchpriority="high" width="1170" height="785">
+  <div class="scrim"></div>
+  <div class="grain"></div>
+  <div class="hero-copy">
+    <span class="lab">{{hero.eyebrow}}</span>
+    <h1 class="display">{{hero.line1}}<br>{{hero.line2}}<br><em>{{hero.accent}}</em></h1>
+  </div>
+  <div class="readout">
+    <hr>
+    <div class="row">
+      {{#each hero.readings}}<div><div class="figure">{{value}}</div><div class="lab lab-quiet">{{label}}</div></div>{{/each}}
+      <div class="act"><a class="btn" href="/apply/">{{hero.cta}}</a></div>
+    </div>
+  </div>
 </section>
 
-{{#each hero.image}}<figure class="bleed"><img src="{{src}}" alt="{{alt}}" width="2000" height="1125"></figure>{{/each}}
-
-<section class="band manifesto">
-  {{#each manifesto}}<p>{{this}}</p>
-  {{/each}}
+<section class="manifesto">
+  <span class="lab">{{manifesto.eyebrow}}</span>
+  <div>
+    <p class="quiet">{{#each manifesto.quiet}}{{this}}<br>{{/each}}</p>
+    <p class="loud">{{manifesto.loud}}<em>{{manifesto.loudAccent}}</em></p>
+  </div>
 </section>
 
-<section class="band">
+{{#each rounds}}{{> _round}}{{/each}}
+
+<section class="reference">
+  <span class="lab">Reference</span>
   <h2>{{comparison.title}}</h2>
-  <p class="lead">{{comparison.note}}</p>
+  <p class="body">{{comparison.note}}</p>
   <div class="table-scroll">
     <table class="compare">
       <thead><tr><th scope="col"></th>{{#each comparison.columns}}<th scope="col">{{this}}</th>{{/each}}</tr></thead>
       <tbody>
-        {{#each comparison.rows}}<tr><th scope="row">{{label}}</th>{{#each values}}<td>{{this}}</td>{{/each}}</tr>
-        {{/each}}
+        {{#each comparison.rows}}<tr><th scope="row">{{label}}</th>{{#each values}}<td>{{this}}</td>{{/each}}</tr>{{/each}}
       </tbody>
     </table>
   </div>
 </section>
 
-<section class="band">
-  <h2>{{lab.title}}</h2>
-  {{#each lab.body}}<p>{{this}}</p>
-  {{/each}}
-</section>
-
-<section class="band">
-  <h2>The two rituals</h2>
-  <div class="pair">
-    {{#each rituals}}
-    <article>
-      <h3><a href="/ritual/#{{slug}}">{{name}}</a></h3>
-      <p class="quiet">{{stage}}</p>
-      <p>{{summary}}</p>
-    </article>
+<section class="split photo-left">
+  <div class="shot">
+    <img src="{{accessPhoto.src}}" srcset="{{accessPhoto.small}} 640w, {{accessPhoto.src}} 1170w" sizes="(min-width:56rem) 50vw, 100vw" alt="{{accessPhoto.alt}}" loading="lazy" width="1170" height="785">
+    <div class="grain"></div>
+  </div>
+  <div class="text">
+    <span class="lab">Access</span>
+    <h2>Three rules</h2>
+    {{#each access}}
+    <div class="rule-item">
+      <h3>{{title}}</h3>
+      <p class="body">{{body}}</p>
+    </div>
     {{/each}}
   </div>
 </section>
 
-<section class="band gallery-band">
-  <h2>The work</h2>
-  <div class="gallery">
-  {{#each gallery}}
-    <figure><img src="{{src}}" alt="{{alt}}" loading="lazy" width="1200" height="900"><figcaption>{{caption}}</figcaption></figure>
-  {{/each}}
+<section class="band-cold">
+  <img src="{{closing.photo.src}}" srcset="{{closing.photo.small}} 640w, {{closing.photo.src}} 1170w" sizes="100vw" alt="{{closing.photo.alt}}" loading="lazy" width="1170" height="1218">
+  <div class="scrim"></div>
+  <div class="grain"></div>
+  <div class="inner">
+    <span class="lab">{{closing.eyebrow}}</span>
+    <p class="big">{{closing.line1}}<br>{{closing.line2}}</p>
+    <p class="body">{{closing.body}}</p>
+    <a class="btn btn-cold" href="/apply/">Apply</a>
   </div>
-</section>
-
-<section class="band">
-  <h2>How access works</h2>
-  {{#each access}}
-  <div class="rule">
-    <h3>{{title}}</h3>
-    <p>{{body}}</p>
-  </div>
-  {{/each}}
-  <p class="actions"><a class="btn" href="/apply/">Apply</a></p>
 </section>
 {{> _footer}}

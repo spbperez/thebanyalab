@@ -1,0 +1,14 @@
+<section class="round {{tone}} {{side}}">
+  <div class="text">
+    <span class="lab">{{label}}</span>
+    <h2>{{title}}</h2>
+    <p class="body">{{body}}</p>
+    <div class="figures">
+      {{#each figures}}<div><div class="figure">{{value}}</div><div class="lab lab-quiet">{{label}}</div></div>{{/each}}
+    </div>
+  </div>
+  <div class="shot">
+    <img src="{{photo.src}}" srcset="{{photo.small}} 640w, {{photo.src}} 1170w" sizes="(min-width:56rem) 50vw, 100vw" alt="{{photo.alt}}" loading="lazy" width="1170" height="785">
+    <div class="grain"></div>
+  </div>
+</section>

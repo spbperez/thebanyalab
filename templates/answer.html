@@ -1,12 +1,13 @@
 {{> _head}}
-<article class="prose">
+<article class="answer">
   <p class="crumb"><a href="/answers/">Answers</a></p>
   <h1>{{answer.question}}</h1>
-  <p class="short-answer">{{answer.short}}</p>
-  {{#each answer.body}}<p>{{this}}</p>
-  {{/each}}
-  {{#each answer.sources}}<p class="src">Source: <a href="{{url}}" rel="noopener nofollow">{{title}}</a></p>{{/each}}
-  <p class="quiet">Updated {{answer.updated}}</p>
-  <p class="actions"><a class="btn" href="/apply/">Apply for a session</a></p>
+  <div class="short-answer"><p>{{answer.short}}</p></div>
+  {{#each answer.body}}<p class="body">{{this}}</p>{{/each}}
+  <div class="answer-foot">
+    <div>{{#each answer.sources}}<p class="src">Source — <a href="{{url}}" rel="noopener nofollow">{{title}}</a></p>{{/each}}</div>
+    <p class="src">Updated {{answer.updated}}</p>
+  </div>
+  <p style="margin-top:3rem"><a class="btn" href="/apply/">Apply for a session</a></p>
 </article>
 {{> _footer}}

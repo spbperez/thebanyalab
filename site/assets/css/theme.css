@@ -1,5 +1,5 @@
 /* The Banya Lab — единственный файл, который правится под клиента визуально.
-   Решение и запреты: docs/DESIGN.md */
+   Решение, запреты и почему именно так: docs/DESIGN.md */
 
 :root{
   --ink:#0A0A0A;
@@ -8,198 +8,237 @@
   --ember:#C49A5C;
   --steam:#F5F0E6;
   --ocean:#1B3A52;
+  --abyss:#0A1F26;
+  --cold:#5FA8AC;
+  --cold-text:#EAF4F3;
 
-  --hair:rgba(196,154,92,.18);
-  --dim:rgba(245,240,230,.62);
+  --hair:rgba(196,154,92,.20);
+  --hair-cold:rgba(95,168,172,.24);
+  --dim:rgba(245,240,230,.60);
+  --dim-cold:rgba(234,244,243,.62);
 
-  --serif:ui-serif,Georgia,"Times New Roman",serif;
-  --sans:system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --sans:Archivo,"Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
 
-  --measure:64ch;
-  --gap:clamp(3.5rem,9vw,7rem);
-  --pad:clamp(1.25rem,5vw,3rem);
+  --measure:52ch;
+  --pad:clamp(1.5rem,5vw,4.5rem);
+  --gap:clamp(4rem,9vw,7rem);
+
+  --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='.5'/></svg>");
 }
 
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{
   margin:0;background:var(--ink);color:var(--steam);
-  font:400 1.0625rem/1.7 var(--sans);
-  letter-spacing:.005em;
+  font:400 1rem/1.65 var(--sans);
   overflow-x:hidden;
 }
-img{max-width:100%;height:auto;display:block}
-a{color:var(--ember);text-decoration:none;border-bottom:1px solid rgba(196,154,92,.35)}
-a:hover{border-bottom-color:var(--ember)}
+img{display:block;max-width:100%;height:auto}
+a{color:var(--ember);text-decoration:none}
+a:hover{color:var(--steam)}
 :focus-visible{outline:2px solid var(--ember);outline-offset:3px}
 
 .skip{position:absolute;left:-9999px}
-.skip:focus{left:var(--pad);top:.75rem;background:var(--ink);padding:.5rem .75rem;z-index:10}
+.skip:focus{left:var(--pad);top:.75rem;z-index:20;background:var(--ink);padding:.6rem .9rem}
+
+/* ---------- шкала ритуала: от угля к воде ---------- */
+.scale{position:fixed;left:0;top:0;bottom:0;width:2px;z-index:9;pointer-events:none;
+  background:linear-gradient(#C49A5C 0%,#8B5A2B 20%,#3D2817 38%,#0A1F26 50%,#5FA8AC 62%,#1B3A52 78%,#0A0A0A 100%)}
+
+/* ---------- зерно ---------- */
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.34;mix-blend-mode:overlay;background-image:var(--grain)}
+.cold .grain,.band-cold .grain{mix-blend-mode:soft-light}
+
+/* ---------- типографика ---------- */
+.lab{font:500 .6875rem/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--ember)}
+.lab-quiet{color:rgba(245,240,230,.40)}
+.figure{font:400 .8125rem/1 var(--mono);letter-spacing:.05em;color:var(--ember);font-variant-numeric:tabular-nums}
+.display{font:300 clamp(2.6rem,7.4vw,6.5rem)/0.94 var(--serif);letter-spacing:-.025em;margin:0}
+h2{font:300 clamp(1.9rem,4.4vw,3.75rem)/1.02 var(--serif);letter-spacing:-.018em;margin:0}
+h3{font:400 1.375rem/1.3 var(--serif);margin:0}
+.body{font:400 1.0625rem/1.75 var(--sans);color:var(--dim);max-width:var(--measure);margin:0}
+em{font-style:italic;color:var(--ember)}
 
 /* ---------- шапка ---------- */
-header.site{
-  display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;
-  padding:1.25rem var(--pad);border-bottom:1px solid var(--hair);
-}
-.wordmark{
-  font:400 1rem/1 var(--serif);letter-spacing:.14em;text-transform:uppercase;
-  color:var(--steam);border:0;
-}
-header.site nav{display:flex;gap:clamp(.9rem,3vw,1.75rem);font-size:.875rem}
-header.site nav a{color:var(--dim);border:0;letter-spacing:.06em}
-header.site nav a:hover{color:var(--steam)}
-header.site nav a.cta{color:var(--ember)}
+header.site{position:relative;z-index:3;display:flex;align-items:baseline;justify-content:space-between;
+  gap:1rem;flex-wrap:wrap;padding:1.7rem var(--pad)}
+.wordmark{font:400 .9375rem/1 var(--serif);letter-spacing:.34em;text-transform:uppercase;color:var(--steam)}
+header.site nav{display:flex;gap:clamp(1rem,2.6vw,2.4rem);
+  font:400 .75rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase}
+header.site nav a{color:rgba(245,240,230,.7)}
+header.site nav a[aria-current="page"],header.site nav a.cta{color:var(--ember)}
 
-/* ---------- первый экран: одна печь ---------- */
-.hero{
-  position:relative;padding:clamp(4rem,16vh,9rem) var(--pad) var(--gap);
-  min-height:min(78svh,720px);display:flex;flex-direction:column;justify-content:center;
-  overflow:hidden;
-}
-.ember{
-  position:absolute;left:-20%;bottom:-45%;width:min(150vw,1100px);aspect-ratio:1;
-  background:radial-gradient(circle at 50% 50%,
-    rgba(196,154,92,.30) 0%,
-    rgba(139,90,43,.20) 28%,
-    rgba(61,40,23,.16) 48%,
-    transparent 68%);
-  pointer-events:none;
-}
-.hero>*{position:relative}
-.hero h1{
-  margin:0;max-width:14ch;
-  font:400 clamp(2.75rem,11vw,6.5rem)/.95 var(--serif);
-  letter-spacing:-.025em;
-}
-.hero h1 em{font-style:italic;color:var(--ember)}
-.lead{max-width:var(--measure);color:var(--dim);font-size:1.125rem;margin:1.75rem 0 0}
-.hero .lead{margin-top:2rem}
+/* ---------- первый экран ---------- */
+.hero{position:relative;min-height:min(92svh,940px);display:flex;flex-direction:column;overflow:hidden}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 40%}
+.hero .scrim{position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(10,10,10,.74) 0%,rgba(10,10,10,.26) 34%,rgba(10,10,10,.88) 80%,#0A0A0A 100%)}
+.hero-copy{position:relative;margin-top:auto;padding:0 var(--pad) 2.25rem}
+.hero-copy .lab{display:block;margin-bottom:1.6rem}
+.hero h1{max-width:15ch}
+.readout{position:relative;padding:0 var(--pad) 2.5rem}
+.readout hr{height:1px;background:var(--hair);border:0;margin:0 0 1.1rem}
+.readout .row{display:flex;flex-wrap:wrap;gap:clamp(1.4rem,4vw,4rem);align-items:flex-end}
+.readout .figure{font-size:1.25rem}
+.readout .lab{margin-top:.5rem}
+.readout .act{margin-left:auto}
 
-/* ---------- секции ---------- */
-.band,.page-head,.prose{padding:var(--gap) var(--pad);max-width:none}
-.band,.prose{border-top:1px solid var(--hair)}
-.band>*,.page-head>*,.prose>*{max-width:var(--measure)}
-.page-head{padding-bottom:0}
-h2{font:400 clamp(1.75rem,4.5vw,2.75rem)/1.1 var(--serif);letter-spacing:-.015em;margin:0 0 1.25rem}
-h3{font:400 1.25rem/1.3 var(--serif);letter-spacing:-.01em;margin:2rem 0 .5rem}
-.page-head h1,.prose h1{font:400 clamp(2.25rem,7vw,4rem)/1.02 var(--serif);letter-spacing:-.02em;margin:0}
-p{margin:0 0 1.15rem}
-.quiet{color:var(--dim);font-size:.9375rem}
-
-.manifesto p{
-  font:400 clamp(1.375rem,4vw,2rem)/1.35 var(--serif);
-  max-width:22ch;margin:0 0 .35rem;
-}
-.manifesto p:nth-child(4){margin-top:2rem;color:var(--ember)}
-
-.actions{margin-top:2.5rem}
-.btn{
-  display:inline-block;border:1px solid var(--ember);color:var(--ember);
-  padding:.85rem 1.6rem;font:400 .9375rem/1 var(--sans);letter-spacing:.08em;
-  text-transform:uppercase;background:transparent;cursor:pointer;
-  transition:background .18s ease,color .18s ease;
-}
+.btn{display:inline-block;border:1px solid var(--ember);color:var(--ember);background:transparent;cursor:pointer;
+  padding:1rem 2.1rem;font:400 .75rem/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
+  transition:background .18s ease,color .18s ease}
 .btn:hover{background:var(--ember);color:var(--ink)}
+.btn-solid{background:var(--ember);color:var(--ink);font-weight:500}
+.btn-solid:hover{background:var(--steam);border-color:var(--steam);color:var(--ink)}
+.btn-cold{border-color:var(--cold);color:var(--cold-text)}
+.btn-cold:hover{background:var(--cold);color:var(--abyss)}
 
-/* ---------- таблица: страница из справочника ---------- */
-.table-scroll{overflow-x:auto;max-width:100%;margin-top:2rem}
-table.compare{border-collapse:collapse;min-width:36rem;font-size:.9375rem}
-table.compare th,table.compare td{
-  text-align:left;padding:.7rem 1.25rem .7rem 0;border-bottom:1px solid var(--hair);
-  vertical-align:top;
-}
-table.compare thead th{
-  color:var(--dim);font-weight:400;font-size:.8125rem;letter-spacing:.08em;
-  text-transform:uppercase;padding-bottom:.9rem;
-}
+/* ---------- манифест ---------- */
+.manifesto{display:flex;gap:clamp(2rem,7vw,7rem);align-items:flex-start;padding:var(--gap) var(--pad)}
+.manifesto .lab{flex:none;width:8.5rem;padding-top:.9rem}
+.manifesto p{font:300 clamp(1.6rem,3.4vw,2.9rem)/1.24 var(--serif);margin:0;max-width:22ch}
+.manifesto .quiet{color:rgba(245,240,230,.5)}
+.manifesto .loud{margin-top:2rem;color:var(--steam)}
+
+/* ---------- раунды ---------- */
+.round{display:grid;grid-template-columns:1fr;border-top:1px solid var(--hair)}
+.round .text{padding:var(--gap) var(--pad);display:flex;flex-direction:column;justify-content:center}
+.round h2{margin:1.5rem 0}
+.round .shot{position:relative;overflow:hidden;min-height:58vw}
+.round .shot img{width:100%;height:100%;object-fit:cover}
+.round .figures{display:flex;flex-wrap:wrap;gap:2.5rem;margin-top:2.5rem}
+.round .figures .lab{margin-top:.55rem}
+.round.cold{background:var(--abyss);border-top-color:var(--hair-cold)}
+.round.cold h2{color:var(--cold-text)}
+.round.cold .body{color:var(--dim-cold)}
+.round.cold .lab{color:var(--cold)}
+.round.cold .figure{color:var(--cold)}
+.round.cold .lab-quiet{color:rgba(234,244,243,.42)}
+
+/* ---------- справочная таблица ---------- */
+.reference{padding:var(--gap) var(--pad);border-top:1px solid var(--hair)}
+.reference h2{margin:1.5rem 0 1rem}
+.table-scroll{overflow-x:auto;margin-top:2.6rem}
+table.compare{border-collapse:collapse;min-width:40rem;width:100%;font:400 .9375rem/1.5 var(--sans)}
+table.compare th,table.compare td{text-align:left;padding:.9rem 1.4rem .9rem 0;vertical-align:top;
+  border-top:1px solid var(--hair)}
+table.compare thead th{border-top:0;padding-bottom:1rem;font:400 .6875rem/1 var(--mono);
+  letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,230,.42)}
 table.compare thead th:last-child{color:var(--ember)}
-table.compare tbody th{color:var(--dim);font-weight:400;white-space:nowrap}
-table.compare td{font-variant-numeric:tabular-nums}
+table.compare tbody th{font-weight:400;color:rgba(245,240,230,.42);white-space:nowrap}
+table.compare td{color:rgba(245,240,230,.55);font-variant-numeric:tabular-nums}
 table.compare td:last-child{color:var(--steam)}
 
-/* ---------- списки ---------- */
-.flow{counter-reset:step;list-style:none;padding:0;margin:1rem 0 0}
-.flow li{counter-increment:step;padding:.55rem 0 .55rem 3rem;position:relative;border-bottom:1px solid var(--hair)}
-.flow li::before{
-  content:counter(step,decimal-leading-zero);position:absolute;left:0;top:.6rem;
-  color:var(--wood);font:400 .8125rem/1 var(--sans);letter-spacing:.1em;
-}
-.prices{list-style:none;padding:0;margin:1rem 0 1.5rem}
-.prices li{padding:.6rem 0;border-bottom:1px solid var(--hair)}
-.amount{font:400 1.375rem/1 var(--serif);color:var(--ember);font-variant-numeric:tabular-nums}
+/* ---------- две колонки: кадр и текст ---------- */
+.split{display:grid;grid-template-columns:1fr;border-top:1px solid var(--hair)}
+.split .shot{position:relative;overflow:hidden;min-height:58vw}
+.split .shot img{width:100%;height:100%;object-fit:cover}
+.split .text{padding:var(--gap) var(--pad)}
+.split h2{margin:1.5rem 0 2.4rem}
+.rule-item{border-top:1px solid var(--hair);padding:1.4rem 0}
+.rule-item:last-child{border-bottom:1px solid var(--hair)}
+.rule-item h3{margin-bottom:.5rem}
+.rule-item .body{font-size:.9375rem}
 
-.vocab{margin:1rem 0 0}
-.vocab dt{font:400 1.0625rem/1.4 var(--serif);color:var(--ember);margin-top:1.25rem}
-.vocab dd{margin:.25rem 0 0;color:var(--dim)}
+/* ---------- закрывающая полоса ---------- */
+.band-cold{position:relative;overflow:hidden;min-height:min(70svh,620px);display:flex}
+.band-cold>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+.band-cold .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,31,38,.56),rgba(10,31,38,.9))}
+.band-cold .inner{position:relative;margin:auto;text-align:center;padding:var(--gap) var(--pad)}
+.band-cold .lab{color:var(--cold)}
+.band-cold p.big{font:300 clamp(2.1rem,5vw,3.9rem)/1.1 var(--serif);color:var(--cold-text);margin:1.5rem 0 1rem}
+.band-cold .body{color:var(--dim-cold);margin:0 auto 2.4rem}
 
-.pair{display:grid;gap:2.5rem;margin-top:1rem}
-.pair h3{margin-top:0}
-.pair h3 a{border:0}
-.rule{border-top:1px solid var(--hair);padding-top:1.25rem;margin-top:1.75rem}
-.rule h3{margin-top:0}
+/* ---------- страницы ---------- */
+.page-head{padding:var(--gap) var(--pad) 0}
+.page-head h1{font:300 clamp(2.2rem,6vw,4.6rem)/1.0 var(--serif);letter-spacing:-.022em;margin:1.4rem 0 1.4rem;max-width:17ch}
+.band{padding:var(--gap) var(--pad);border-top:1px solid var(--hair)}
+.band>*{max-width:var(--measure)}
+.band>h2{max-width:20ch}
+.band-plain{padding:var(--gap) var(--pad)}
 
-.answer-list{list-style:none;padding:0;margin:0}
-.answer-list li{border-bottom:1px solid var(--hair);padding:1.75rem 0}
-.answer-list li:first-child{padding-top:0}
-.answer-list h2{font-size:clamp(1.25rem,3.5vw,1.625rem);margin-bottom:.5rem}
-.answer-list h2 a{border:0}
-.answer-list p{color:var(--dim);margin:0}
+.flow{counter-reset:step;list-style:none;padding:0;margin:1.5rem 0 0;max-width:44rem}
+.flow li{counter-increment:step;position:relative;padding:.85rem 0 .85rem 3.4rem;border-top:1px solid var(--hair);color:rgba(245,240,230,.78)}
+.flow li:last-child{border-bottom:1px solid var(--hair)}
+.flow li::before{content:counter(step,decimal-leading-zero);position:absolute;left:0;top:.95rem;
+  font:400 .75rem/1.7 var(--mono);color:var(--wood);letter-spacing:.1em}
 
-.crumb{font-size:.8125rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.5rem}
-.crumb a{border:0;color:var(--dim)}
-.short-answer{
-  font:400 clamp(1.25rem,3.2vw,1.625rem)/1.45 var(--serif);
-  color:var(--ember);max-width:34ch;margin:1.75rem 0 2.25rem;
-}
+.prices{display:flex;flex-wrap:wrap;gap:3rem;margin:2.6rem 0 1.4rem}
+.amount{font:400 1.9rem/1 var(--mono);letter-spacing:-.02em;color:var(--ember);font-variant-numeric:tabular-nums}
+.amount-cold{color:var(--cold)}
+.prices .lab{margin-top:.6rem}
+
+.not-list div{border-top:1px solid var(--hair-cold);padding:1rem 0;color:rgba(234,244,243,.55);font-size:.9375rem}
+.not-list div:last-child{border-bottom:1px solid var(--hair-cold)}
+
+.vocab{margin:1.5rem 0 0}
+.vocab dt{font:400 1.0625rem/1.4 var(--serif);color:var(--ember);margin-top:1.4rem}
+.vocab dd{margin:.3rem 0 0;color:var(--dim)}
+
+/* ---------- библиотека ответов ---------- */
+.answers-list{list-style:none;padding:0;margin:0;max-width:46rem}
+.answers-list li{border-top:1px solid var(--hair);padding:1.7rem 0}
+.answers-list li:last-child{border-bottom:1px solid var(--hair)}
+.answers-list h2{font:400 clamp(1.15rem,2.6vw,1.6rem)/1.3 var(--serif);margin-bottom:.45rem}
+.answers-list h2 a{color:var(--steam)}
+.answers-list h2 a:hover{color:var(--ember)}
+.answers-list p{color:var(--dim);margin:0;font-size:.9375rem;max-width:56ch}
+
+.answer{padding:var(--gap) var(--pad);max-width:56rem}
+.crumb{font:400 .6875rem/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;margin:0 0 1.6rem}
+.crumb a{color:rgba(245,240,230,.45)}
+.answer h1{font:300 clamp(2rem,5.2vw,4.1rem)/1.04 var(--serif);letter-spacing:-.02em;margin:0 0 2.6rem;max-width:20ch}
+.short-answer{border-left:2px solid var(--ember);padding-left:1.9rem;margin:0 0 3rem}
+.short-answer p{font:300 clamp(1.35rem,3vw,1.9rem)/1.45 var(--serif);color:var(--steam);margin:0;max-width:32ch}
+.answer .body{max-width:60ch;margin-bottom:1.6rem;color:rgba(245,240,230,.72)}
+.src{font:400 .8125rem/1.6 var(--mono);color:rgba(245,240,230,.4);margin:0}
+.src a{color:rgba(245,240,230,.58)}
+.answer-foot{margin-top:2.6rem;padding-top:1.3rem;border-top:1px solid var(--hair);
+  display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:baseline}
 
 /* ---------- форма ---------- */
-form.apply{max-width:34rem;margin-top:1rem}
-form.apply label{display:block;font-size:.8125rem;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-bottom:.4rem}
-form.apply input,form.apply textarea{
-  width:100%;background:transparent;color:var(--steam);
-  border:1px solid var(--hair);border-radius:0;padding:.75rem .85rem;
-  font:400 1rem/1.5 var(--sans);
-}
-form.apply input:focus,form.apply textarea:focus{border-color:var(--ember);outline:none}
+.apply-grid{display:grid;grid-template-columns:1fr}
+.apply-grid .shot{position:relative;overflow:hidden;min-height:60vw}
+.apply-grid .shot img{width:100%;height:100%;object-fit:cover;object-position:55% 50%}
+.apply-grid .shot .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.5),rgba(10,10,10,.14) 45%,rgba(10,10,10,.78))}
+.apply-grid .shot .cap{position:absolute;left:var(--pad);right:var(--pad);bottom:2.6rem}
+.apply-grid .shot .cap p{font:300 clamp(1.6rem,3.4vw,2.5rem)/1.2 var(--serif);margin:0;max-width:16ch}
+.apply-grid .form-side{padding:var(--gap) var(--pad)}
+form.apply{max-width:34rem;margin-top:2.4rem;display:grid;gap:2.2rem}
+form.apply .pair{display:grid;grid-template-columns:1fr;gap:2.2rem}
+form.apply label{display:block;font:500 .6875rem/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(245,240,230,.45);margin-bottom:.7rem}
+form.apply input,form.apply textarea{width:100%;background:transparent;color:var(--steam);
+  border:0;border-bottom:1px solid rgba(196,154,92,.3);border-radius:0;padding:.4rem 0 .8rem;
+  font:400 1.125rem/1.5 var(--sans)}
+form.apply input:focus,form.apply textarea:focus{border-bottom-color:var(--ember);outline:none}
 form.apply textarea{resize:vertical}
+form.apply .send{display:flex;flex-wrap:wrap;align-items:center;gap:1.8rem}
+form.apply .note{font:400 .75rem/1.6 var(--mono);color:rgba(245,240,230,.35);max-width:26ch}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 
 /* ---------- подвал ---------- */
-footer.site{border-top:1px solid var(--hair);padding:var(--gap) var(--pad) 3rem}
-.f-grid{display:grid;gap:2.5rem}
-.f-grid p{margin:0 0 .4rem;font-size:.9375rem}
-.f-name{font:400 1rem/1 var(--serif);letter-spacing:.14em;text-transform:uppercase}
-.f-grid a{color:var(--dim);border:0}
-.f-grid a:hover{color:var(--ember)}
-.f-legal{margin-top:3rem;font-size:.8125rem}
+footer.site{border-top:1px solid var(--hair);padding:var(--gap) var(--pad) 3rem;
+  display:flex;flex-wrap:wrap;gap:2.5rem;justify-content:space-between;align-items:flex-start}
+footer.site .f-name{font:400 .875rem/1 var(--serif);letter-spacing:.34em;text-transform:uppercase;margin:0 0 1rem}
+footer.site nav{display:flex;gap:3.5rem;font:400 .75rem/2 var(--mono);letter-spacing:.12em;text-transform:uppercase}
+footer.site nav a,footer.site nav span{color:rgba(245,240,230,.42);display:block}
+footer.site nav a:hover{color:var(--ember)}
 
 /* ---------- шире телефона ---------- */
-@media (min-width:52rem){
-  .pair{grid-template-columns:1fr 1fr;gap:3.5rem}
-  .f-grid{grid-template-columns:2fr 1fr 1fr;gap:3rem}
-  .vocab dt{float:left;width:9rem;margin-top:1.25rem}
-  .vocab dd{margin-left:9rem}
+@media (min-width:56rem){
+  .round,.split,.apply-grid{grid-template-columns:1fr 1fr}
+  .round .shot,.split .shot,.apply-grid .shot{min-height:100%}
+  .round.photo-left .text,.split.photo-left .text{order:2}
+  .round.photo-left .shot,.split.photo-left .shot{order:1}
+  .round{min-height:40rem}
+  .round.cold{min-height:46rem}
+  .split{min-height:38rem}
+  .apply-grid{min-height:44rem}
+  .band>*{max-width:var(--measure)}
 }
 
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
-
-/* ---------- фото ---------- */
-figure{margin:0}
-figure img{width:100%;object-fit:cover;filter:saturate(.92)}
-.bleed img{aspect-ratio:16/9;max-height:70svh}
-.wide{margin:2rem 0}
-.wide img{aspect-ratio:3/2}
-.portrait{max-width:22rem;margin:1.5rem 0}
-.portrait img{aspect-ratio:4/5}
-.gallery{display:grid;gap:1px;background:var(--hair);margin-top:2rem}
-.gallery figure{background:var(--ink)}
-.gallery img{aspect-ratio:4/3}
-.gallery figcaption{padding:.7rem .9rem 1.1rem;color:var(--dim);font-size:.8125rem}
-.gallery-band>.gallery{max-width:none}
-@media (min-width:40rem){ .gallery{grid-template-columns:1fr 1fr} }
-@media (min-width:64rem){ .gallery{grid-template-columns:repeat(3,1fr)} }
-.src{font-size:.875rem;color:var(--dim);margin:.25rem 0}
-.src a{color:var(--dim)}
-.src a:hover{color:var(--ember)}

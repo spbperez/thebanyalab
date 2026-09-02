@@ -1,10 +1,11 @@
 {{> _head}}
 <section class="page-head">
-  <h1>{{pay.title}}</h1>
-  <p class="lead">{{pay.intro}}</p>
+  <span class="lab">{{pay.title}}</span>
+  <h1>For confirmed guests.</h1>
+  <p class="body">{{pay.intro}}</p>
 </section>
 <section class="band">
-  <ul class="prices">{{#each pay.links}}<li><a class="btn" href="{{url}}" rel="noopener">{{label}}</a> <span class="quiet">{{note}}</span></li>{{/each}}</ul>
-  <p class="quiet">{{pay.note}} <a href="/apply/">Apply</a>.</p>
+  {{#each pay.links}}<p><a class="btn" href="{{url}}" rel="noopener">{{label}}</a> <span class="lab lab-quiet">{{note}}</span></p>{{/each}}
+  <p class="body">{{pay.note}} <a href="/apply/">Apply</a>.</p>
 </section>
 {{> _footer}}

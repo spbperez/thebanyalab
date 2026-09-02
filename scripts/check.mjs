@@ -118,19 +118,33 @@ const robots = fs.existsSync(p('site/robots.txt')) ? fs.readFileSync(p('site/rob
 const blocked = data.aiCrawlers.filter(a => !robots.includes('User-agent: ' + a))
 blocked.length ? fail('robots.txt пускает ИИ-краулеров', 'не указаны: ' + blocked.join(', ')) : ok.push('robots.txt пускает ИИ-краулеров')
 
-/* 11. Бюджет первого экрана для 4G */
-const BUDGET = 150 * 1024
-const home = fs.existsSync(p('site/index.html')) ? fs.statSync(p('site/index.html')).size : 0
-const css = fs.existsSync(p('site/assets/css/theme.css')) ? fs.statSync(p('site/assets/css/theme.css')).size : 0
-const total = home + css
+/* 11. Бюджет первого экрана для 4G: разметка, стиль и кадр героя */
+const BUDGET = 200 * 1024
+const sizeOf = rel => fs.existsSync(p(rel)) ? fs.statSync(p(rel)).size : 0
+const home = sizeOf('site/index.html')
+const css = sizeOf('site/assets/css/theme.css')
+const heroSrc = (data.hero && data.hero.photo && data.hero.photo.src) || ''
+const hero = heroSrc ? sizeOf('site' + heroSrc) : 0
+const total = home + css + hero
 total > BUDGET ? fail('бюджет первого экрана', Math.round(total / 1024) + ' КБ при лимите ' + BUDGET / 1024 + ' КБ')
                : ok.push('бюджет первого экрана — ' + Math.round(total / 1024) + ' КБ')
 
-/* 12. Слово sauna только в образовательном контексте */
-const sauna = all.filter(a => /\bsauna\b/i.test(a.html))
-  .filter(a => !/not a sauna|is not a sauna|gym sauna|Finnish sauna|same as a sauna|sauna is/i.test(a.html))
-sauna.forEach(a => fail('слово sauna только про чужое', a.file))
-if (!sauna.length) ok.push('слово sauna только про чужое')
+/* 12. Слово sauna — своим продуктом мы его не называем.
+   Ловим только случаи, где рядом стоит «мы» и нет отрицания: разговор
+   про чужую сауну — часть образовательной работы и проходит. */
+const saunaIssues = []
+for (const { file, html } of all) {
+  const text = html.replace(/<script[\s\S]*?<\/script>/gi, ' ')
+                   .replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ')
+  for (const m of text.matchAll(/sauna/gi)) {
+    const w = text.slice(Math.max(0, m.index - 110), m.index + 110)
+    const ours = /\b(we|our)\b/i.test(w)
+    const denied = /\b(not|never|no|instead of|rather than)\b/i.test(w)
+    if (ours && !denied) saunaIssues.push(file + ': «…' + w.trim().slice(0, 100) + '…»')
+  }
+}
+saunaIssues.length ? saunaIssues.slice(0, 6).forEach(d => fail('своё не называем sauna', d))
+                   : ok.push('своё не называем sauna')
 
 /* Отчёт */
 console.log('')

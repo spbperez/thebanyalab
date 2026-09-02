@@ -29,24 +29,50 @@
       "Oahu"
     ],
     "hours": null,
-    "foundedYear": null,
+    "foundedYear": 2026,
     "priceRange": "$$$",
     "schemaType": "HealthAndBeautyBusiness"
   },
   "hero": {
-    "line": "You are not sitting in a room.",
-    "sub": "You are worked on.",
-    "body": "Banya is the Russian heat ritual — a thousand years old, practiced by masters with oak branches, wet steam and cold water. A sailing vessel in Ala Wai Harbor is where we hold it.",
-    "image": []
+    "eyebrow": "Authentic Russian banya · Ala Wai Harbor",
+    "line1": "You are not sitting",
+    "line2": "in a room. You are",
+    "accent": "worked on.",
+    "photo": {
+      "src": "/assets/img/hero.jpg",
+      "small": "/assets/img/hero-640.jpg",
+      "alt": "A master working the steam with an oak venik"
+    },
+    "readings": [
+      {
+        "value": "205°F",
+        "label": "Air"
+      },
+      {
+        "value": "55%",
+        "label": "Humidity"
+      },
+      {
+        "value": "3–4",
+        "label": "Rounds"
+      },
+      {
+        "value": "2 h",
+        "label": "Duration"
+      }
+    ],
+    "cta": "Apply for a session"
   },
-  "manifesto": [
-    "We do not sell sauna.",
-    "We do not sell relaxation.",
-    "We do not sell wellness.",
-    "We sell a reset of the nervous system.",
-    "The silence that comes after the heat.",
-    "The version of you that forgot how to breathe."
-  ],
+  "manifesto": {
+    "eyebrow": "00 — What this is",
+    "quiet": [
+      "We do not sell sauna.",
+      "We do not sell relaxation.",
+      "We do not sell wellness."
+    ],
+    "loud": "We sell the silence that comes ",
+    "loudAccent": "after the heat."
+  },
   "lab": {
     "title": "The Lab",
     "body": [
@@ -86,7 +112,13 @@
         }
       ],
       "minimum": "$600 minimum per session. One or two guests cover it together.",
-      "photos": []
+      "photos": [
+        {
+          "src": "/assets/img/green.jpg",
+          "small": "/assets/img/green-640.jpg",
+          "alt": "A fresh venik held over a guest's back"
+        }
+      ]
     },
     {
       "slug": "ocean-session",
@@ -117,7 +149,13 @@
         "Not a tourist experience. We do not take walk-ins.",
         "Not a photo shoot. Phones are surrendered at boarding."
       ],
-      "photos": []
+      "photos": [
+        {
+          "src": "/assets/img/boat.jpg",
+          "small": "/assets/img/boat-640.jpg",
+          "alt": "The vessel seen from the water"
+        }
+      ]
     }
   ],
   "masters": [
@@ -451,5 +489,119 @@
     "CCBot",
     "Applebot-Extended"
   ],
-  "gallery": []
+  "rounds": [
+    {
+      "n": "01",
+      "label": "01 — Heat",
+      "tone": "warm",
+      "side": "photo-right",
+      "title": "The stone remembers",
+      "body": "Steam here is not made by a machine. It is a ladle of water thrown onto stones heated for hours — heavy enough to flash the water into a fine steam, and to do it again a minute later without going cold. The heaters in a gym hold a fraction of that stone, and most of them forbid water on it altogether.",
+      "figures": [
+        {
+          "value": "180–210°F",
+          "label": "Air"
+        },
+        {
+          "value": "50–60%",
+          "label": "Humidity"
+        }
+      ],
+      "photo": {
+        "src": "/assets/img/stove.jpg",
+        "small": "/assets/img/stove-640.jpg",
+        "alt": "The stove, loaded with stones, before a session"
+      }
+    },
+    {
+      "n": "02",
+      "label": "02 — Par",
+      "tone": "warm",
+      "side": "photo-left",
+      "title": "The venik is a tool",
+      "body": "Air against your skin sits still and insulates you — that is why a body survives 200°F at all. Every sweep of oak breaks that layer and drives the heat in. Held high it takes the hottest air from the ceiling. Pressed flat it holds heat against the back. Lifted and fanned it cools. The master spends the round deciding where the heat goes.",
+      "figures": [
+        {
+          "value": "Oak · Birch",
+          "label": "Venik"
+        },
+        {
+          "value": "Cut in June",
+          "label": "Season"
+        }
+      ],
+      "photo": {
+        "src": "/assets/img/par.jpg",
+        "small": "/assets/img/par-640.jpg",
+        "alt": "A master moving steam across a guest's back"
+      }
+    },
+    {
+      "n": "03",
+      "label": "03 — Cold",
+      "tone": "cold",
+      "side": "photo-right",
+      "title": "Then the ocean takes it back",
+      "body": "Within seconds the vessels close, the breath catches, and the body releases a great deal of noradrenaline. That is the clean, wide-awake state people describe afterwards — and it is why the cold is half of the mechanism, not a flourish at the end. In the harbour it is a plunge. Under sail it is the Pacific.",
+      "figures": [
+        {
+          "value": "74–78°F",
+          "label": "Pacific"
+        },
+        {
+          "value": "30–90 s",
+          "label": "In the water"
+        }
+      ],
+      "photo": {
+        "src": "/assets/img/plunge.jpg",
+        "small": "/assets/img/plunge-640.jpg",
+        "alt": "A guest surfacing beside the hull"
+      }
+    },
+    {
+      "n": "04",
+      "label": "04 — Afterglow",
+      "tone": "warm",
+      "side": "photo-left",
+      "title": "Nobody talks",
+      "body": "Tea, water, and no conversation. Phones were collected at boarding — required, not suggested. Nobody lets go in a room where they might be photographed, and everyone else needs to know it cannot happen. Most people stay quiet for an hour afterwards. That hour is what they come back for.",
+      "figures": [
+        {
+          "value": "No phones",
+          "label": "At boarding"
+        },
+        {
+          "value": "Silence",
+          "label": "During par"
+        }
+      ],
+      "photo": {
+        "src": "/assets/img/rest.jpg",
+        "small": "/assets/img/rest-640.jpg",
+        "alt": "Hands at rest between rounds"
+      }
+    }
+  ],
+  "closing": {
+    "eyebrow": "By application only",
+    "line1": "Heat. Water.",
+    "line2": "Silence. Return.",
+    "body": "Tell us who you are and roughly when suits you. A master replies to arrange the date. Nothing is charged until you have agreed it.",
+    "photo": {
+      "src": "/assets/img/dive.jpg",
+      "small": "/assets/img/dive-640.jpg",
+      "alt": "A guest suspended under the surface"
+    }
+  },
+  "accessPhoto": {
+    "src": "/assets/img/oak.jpg",
+    "small": "/assets/img/oak-640.jpg",
+    "alt": "An oak venik, soaked and ready"
+  },
+  "mastersPhoto": {
+    "src": "/assets/img/hands.jpg",
+    "small": "/assets/img/hands-640.jpg",
+    "alt": "A master's hands on the venik handle"
+  }
 }

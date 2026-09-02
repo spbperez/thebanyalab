@@ -1,30 +1,33 @@
 {{> _head}}
 <section class="page-head">
-  <h1>The two rituals</h1>
-  <p class="lead">Both are banya. Heat, venik, cold, silence. What changes is the stage, not the essence.</p>
+  <span class="lab">Two rituals</span>
+  <h1>The stage changes. The essence does not.</h1>
+  <p class="body">Both are banya — heat, venik, cold, silence. One is held at the dock. The other leaves the harbour and takes the cold plunge out into the Pacific.</p>
 </section>
 
 {{#each rituals}}
-<section class="band" id="{{slug}}">
-  <h2>{{name}}</h2>
-  <p class="quiet">{{stage}}</p>
-  <p class="lead">{{summary}}</p>
-
-  {{#each photos}}<figure class="wide"><img src="{{src}}" alt="{{alt}}" loading="lazy" width="1600" height="1067"></figure>{{/each}}
-
-  <h3>The flow</h3>
-  <ol class="flow">{{#each flow}}<li>{{this}}</li>{{/each}}</ol>
-
-  <h3>What it costs</h3>
-  <ul class="prices">{{#each prices}}<li><span class="amount">{{amount}}</span> <span class="quiet">{{unit}}</span> — {{label}}</li>{{/each}}</ul>
-  <p class="quiet">{{minimum}}</p>
-  <p class="quiet">{{duration}} · {{capacity}}</p>
+<section class="split photo-right" id="{{slug}}">
+  <div class="text">
+    <span class="lab">{{name}}</span>
+    <h2>{{summary}}</h2>
+    <p class="lab lab-quiet">{{stage}}</p>
+    <ol class="flow">{{#each flow}}<li>{{this}}</li>{{/each}}</ol>
+    <div class="prices">
+      {{#each prices}}<div><div class="amount">{{amount}}</div><div class="lab lab-quiet">{{unit}} · {{label}}</div></div>{{/each}}
+    </div>
+    <p class="body">{{minimum}}</p>
+    <p class="lab lab-quiet">{{duration}} · {{capacity}}</p>
+  </div>
+  <div class="shot">
+    {{#each photos}}<img src="{{src}}" srcset="{{small}} 640w, {{src}} 1170w" sizes="(min-width:56rem) 50vw, 100vw" alt="{{alt}}" loading="lazy" width="1170" height="785">{{/each}}
+    <div class="grain"></div>
+  </div>
 </section>
 {{/each}}
 
 <section class="band">
-  <h2>The words we use</h2>
+  <span class="lab">The words we use</span>
   <dl class="vocab">{{#each vocabulary}}<dt>{{term}}</dt><dd>{{meaning}}</dd>{{/each}}</dl>
-  <p class="actions"><a class="btn" href="/apply/">Apply for a session</a></p>
+  <p style="margin-top:2.6rem"><a class="btn" href="/apply/">Apply for a session</a></p>
 </section>
 {{> _footer}}

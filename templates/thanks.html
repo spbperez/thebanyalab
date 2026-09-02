@@ -1,7 +1,13 @@
 {{> _head}}
-<section class="page-head">
-  <h1>{{thanks.title}}</h1>
-  <p class="lead">{{thanks.body}}</p>
-  <p class="actions"><a class="btn" href="/">Back</a></p>
+<section class="band-cold">
+  <img src="{{closing.photo.src}}" srcset="{{closing.photo.small}} 640w, {{closing.photo.src}} 1170w" sizes="100vw" alt="{{closing.photo.alt}}" width="1170" height="1218">
+  <div class="scrim"></div>
+  <div class="grain"></div>
+  <div class="inner">
+    <span class="lab">{{thanks.title}}</span>
+    <p class="big">A master will<br>come back to you.</p>
+    <p class="body">{{thanks.body}}</p>
+    <a class="btn btn-cold" href="/">Back</a>
+  </div>
 </section>
 {{> _footer}}

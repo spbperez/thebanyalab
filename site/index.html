@@ -12,11 +12,15 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="/">
 <meta name="theme-color" content="#0A0A0A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Archivo:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="/assets/css/theme.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"HealthAndBeautyBusiness","@id":"/#business","name":"The Banya Lab","description":"Banya is the Russian heat ritual — a thousand years old, practiced by masters with oak branches, wet steam and cold water. We brought it to Hawaii.","url":"/","priceRange":"$$$","image":"/assets/img/og.jpg","address":{"@type":"PostalAddress","addressLocality":"Honolulu","addressRegion":"HI","addressCountry":"US"},"areaServed":[{"@type":"City","name":"Honolulu"},{"@type":"City","name":"Oahu"}],"sameAs":["https://instagram.com/banya_lab_hawaii"]},{"@type":"WebPage","@id":"/#page","url":"/","name":"The Banya Lab — Authentic Russian Banya · Honolulu","isPartOf":{"@id":"/#business"},"dateModified":"2026-09-02"},{"@type":"Service","@id":"/ritual/#lab-session","name":"The Lab Session","description":"The full ritual, held at the dock. Small group, four rounds, two hours.","serviceType":"Russian banya ritual","provider":{"@id":"/#business"},"areaServed":"Honolulu, Oahu"},{"@type":"Service","@id":"/ritual/#ocean-session","name":"The Ocean Session","description":"The same ritual, taken out of the harbour. The cold plunge becomes the ocean.","serviceType":"Russian banya ritual","provider":{"@id":"/#business"},"areaServed":"Honolulu, Oahu"}]}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="scale" aria-hidden="true"></div>
 <header class="site">
   <a class="wordmark" href="/">The Banya Lab</a>
   <nav aria-label="Main">
@@ -29,121 +33,160 @@
 <main id="main">
 
 <section class="hero">
-  <div class="ember" aria-hidden="true"></div>
-  <h1>You are not sitting in a room.<br><em>You are worked on.</em></h1>
-  <p class="lead">Banya is the Russian heat ritual — a thousand years old, practiced by masters with oak branches, wet steam and cold water. A sailing vessel in Ala Wai Harbor is where we hold it.</p>
-  <p class="actions"><a class="btn" href="/apply/">Apply for a session</a></p>
+  <img src="/assets/img/hero.jpg" srcset="/assets/img/hero-640.jpg 640w, /assets/img/hero.jpg 1170w" sizes="100vw" alt="A master working the steam with an oak venik" fetchpriority="high" width="1170" height="785">
+  <div class="scrim"></div>
+  <div class="grain"></div>
+  <div class="hero-copy">
+    <span class="lab">Authentic Russian banya · Ala Wai Harbor</span>
+    <h1 class="display">You are not sitting<br>in a room. You are<br><em>worked on.</em></h1>
+  </div>
+  <div class="readout">
+    <hr>
+    <div class="row">
+      <div><div class="figure">205°F</div><div class="lab lab-quiet">Air</div></div><div><div class="figure">55%</div><div class="lab lab-quiet">Humidity</div></div><div><div class="figure">3–4</div><div class="lab lab-quiet">Rounds</div></div><div><div class="figure">2 h</div><div class="lab lab-quiet">Duration</div></div>
+      <div class="act"><a class="btn" href="/apply/">Apply for a session</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="manifesto">
+  <span class="lab">00 — What this is</span>
+  <div>
+    <p class="quiet">We do not sell sauna.<br>We do not sell relaxation.<br>We do not sell wellness.<br></p>
+    <p class="loud">We sell the silence that comes <em>after the heat.</em></p>
+  </div>
+</section>
+
+<section class="round warm photo-right">
+  <div class="text">
+    <span class="lab">01 — Heat</span>
+    <h2>The stone remembers</h2>
+    <p class="body">Steam here is not made by a machine. It is a ladle of water thrown onto stones heated for hours — heavy enough to flash the water into a fine steam, and to do it again a minute later without going cold. The heaters in a gym hold a fraction of that stone, and most of them forbid water on it altogether.</p>
+    <div class="figures">
+      <div><div class="figure">180–210°F</div><div class="lab lab-quiet">Air</div></div><div><div class="figure">50–60%</div><div class="lab lab-quiet">Humidity</div></div>
+    </div>
+  </div>
+  <div class="shot">
+    <img src="/assets/img/stove.jpg" srcset="/assets/img/stove-640.jpg 640w, /assets/img/stove.jpg 1170w" sizes="(min-width:56rem) 50vw, 100vw" alt="The stove, loaded with stones, before a session" loading="lazy" width="1170" height="785">
+    <div class="grain"></div>
+  </div>
+</section>
+<section class="round warm photo-left">
+  <div class="text">
+    <span class="lab">02 — Par</span>
+    <h2>The venik is a tool</h2>
+    <p class="body">Air against your skin sits still and insulates you — that is why a body survives 200°F at all. Every sweep of oak breaks that layer and drives the heat in. Held high it takes the hottest air from the ceiling. Pressed flat it holds heat against the back. Lifted and fanned it cools. The master spends the round deciding where the heat goes.</p>
+    <div class="figures">
+      <div><div class="figure">Oak · Birch</div><div class="lab lab-quiet">Venik</div></div><div><div class="figure">Cut in June</div><div class="lab lab-quiet">Season</div></div>
+    </div>
+  </div>
+  <div class="shot">
+    <img src="/assets/img/par.jpg" srcset="/assets/img/par-640.jpg 640w, /assets/img/par.jpg 1170w" sizes="(min-width:56rem) 50vw, 100vw" alt="A master moving steam across a guest's back" loading="lazy" width="1170" height="785">
+    <div class="grain"></div>
+  </div>
+</section>
+<section class="round cold photo-right">
+  <div class="text">
+    <span class="lab">03 — Cold</span>
+    <h2>Then the ocean takes it back</h2>
+    <p class="body">Within seconds the vessels close, the breath catches, and the body releases a great deal of noradrenaline. That is the clean, wide-awake state people describe afterwards — and it is why the cold is half of the mechanism, not a flourish at the end. In the harbour it is a plunge. Under sail it is the Pacific.</p>
+    <div class="figures">
+      <div><div class="figure">74–78°F</div><div class="lab lab-quiet">Pacific</div></div><div><div class="figure">30–90 s</div><div class="lab lab-quiet">In the water</div></div>
+    </div>
+  </div>
+  <div class="shot">
+    <img src="/assets/img/plunge.jpg" srcset="/assets/img/plunge-640.jpg 640w, /assets/img/plunge.jpg 1170w" sizes="(min-width:56rem) 50vw, 100vw" alt="A guest surfacing beside the hull" loading="lazy" width="1170" height="785">
+    <div class="grain"></div>
+  </div>
+</section>
+<section class="round warm photo-left">
+  <div class="text">
+    <span class="lab">04 — Afterglow</span>
+    <h2>Nobody talks</h2>
+    <p class="body">Tea, water, and no conversation. Phones were collected at boarding — required, not suggested. Nobody lets go in a room where they might be photographed, and everyone else needs to know it cannot happen. Most people stay quiet for an hour afterwards. That hour is what they come back for.</p>
+    <div class="figures">
+      <div><div class="figure">No phones</div><div class="lab lab-quiet">At boarding</div></div><div><div class="figure">Silence</div><div class="lab lab-quiet">During par</div></div>
+    </div>
+  </div>
+  <div class="shot">
+    <img src="/assets/img/rest.jpg" srcset="/assets/img/rest-640.jpg 640w, /assets/img/rest.jpg 1170w" sizes="(min-width:56rem) 50vw, 100vw" alt="Hands at rest between rounds" loading="lazy" width="1170" height="785">
+    <div class="grain"></div>
+  </div>
 </section>
 
 
-
-<section class="band manifesto">
-  <p>We do not sell sauna.</p>
-  <p>We do not sell relaxation.</p>
-  <p>We do not sell wellness.</p>
-  <p>We sell a reset of the nervous system.</p>
-  <p>The silence that comes after the heat.</p>
-  <p>The version of you that forgot how to breathe.</p>
-  
-</section>
-
-<section class="band">
+<section class="reference">
+  <span class="lab">Reference</span>
   <h2>Banya is not a sauna</h2>
-  <p class="lead">Most Americans picture the cedar box at the gym. That runs at 150–175°F and often bans water on the stones outright. Here is the actual difference.</p>
+  <p class="body">Most Americans picture the cedar box at the gym. That runs at 150–175°F and often bans water on the stones outright. Here is the actual difference.</p>
   <div class="table-scroll">
     <table class="compare">
       <thead><tr><th scope="col"></th><th scope="col">US gym sauna</th><th scope="col">Finnish sauna</th><th scope="col">Russian banya</th></tr></thead>
       <tbody>
-        <tr><th scope="row">Temperature</th><td>150–175°F</td><td>175–200°F</td><td>180–210°F</td></tr>
-        <tr><th scope="row">Humidity</th><td>~5%</td><td>10–20%</td><td>50–60%</td></tr>
-        <tr><th scope="row">Water on stones</th><td>Often banned</td><td>Yes — löyly</td><td>Yes, plentiful</td></tr>
-        <tr><th scope="row">Tool</th><td>None</td><td>Sometimes vihta</td><td>Venik — oak or birch</td></tr>
-        <tr><th scope="row">Attendant</th><td>None</td><td>None</td><td>A master works on you</td></tr>
-        <tr><th scope="row">Duration</th><td>10–15 min</td><td>15–20 min</td><td>2 hours, several rounds</td></tr>
-        <tr><th scope="row">After</th><td>Shower</td><td>Cold pour or lake</td><td>Cold plunge or ocean</td></tr>
-        <tr><th scope="row">Purpose</th><td>A quick sweat</td><td>Heat the body</td><td>Reset the nervous system</td></tr>
-        
+        <tr><th scope="row">Temperature</th><td>150–175°F</td><td>175–200°F</td><td>180–210°F</td></tr><tr><th scope="row">Humidity</th><td>~5%</td><td>10–20%</td><td>50–60%</td></tr><tr><th scope="row">Water on stones</th><td>Often banned</td><td>Yes — löyly</td><td>Yes, plentiful</td></tr><tr><th scope="row">Tool</th><td>None</td><td>Sometimes vihta</td><td>Venik — oak or birch</td></tr><tr><th scope="row">Attendant</th><td>None</td><td>None</td><td>A master works on you</td></tr><tr><th scope="row">Duration</th><td>10–15 min</td><td>15–20 min</td><td>2 hours, several rounds</td></tr><tr><th scope="row">After</th><td>Shower</td><td>Cold pour or lake</td><td>Cold plunge or ocean</td></tr><tr><th scope="row">Purpose</th><td>A quick sweat</td><td>Heat the body</td><td>Reset the nervous system</td></tr>
       </tbody>
     </table>
   </div>
 </section>
 
-<section class="band">
-  <h2>The Lab</h2>
-  <p>Most banyas abroad replicate a fixed template — the same parilka, the same temperature, the same protocol, every time. We respect the tradition, and we do not stop there.</p>
-  <p>In a country the size of Russia the ritual split into hundreds of local variations — Siberian, Altai, Karelian, Ural, village traditions that never reached a textbook. Our masters come from that living tradition and keep working inside it. We read old practitioner notes. We travel back to masters who carry local knowledge. We test, we keep what works, we discard what does not.</p>
-  <p>It also means no two masters here work the same way. Max builds hard contrast and drives it through you. Yura reads your breath and skin and balances the steam on the edge of what your body will take. Same ritual, different hands, and you will feel which one you are under.</p>
-  <p>That is what Lab means. Same ancient foundation. Active experimentation on top of it. Every session is, in some small way, an experiment — and you are in the room for it.</p>
-  
-</section>
-
-<section class="band">
-  <h2>The two rituals</h2>
-  <div class="pair">
-    
-    <article>
-      <h3><a href="/ritual/#lab-session">The Lab Session</a></h3>
-      <p class="quiet">A sailing vessel in Ala Wai Harbor</p>
-      <p>The full ritual, held at the dock. Small group, four rounds, two hours.</p>
-    </article>
-    
-    <article>
-      <h3><a href="/ritual/#ocean-session">The Ocean Session</a></h3>
-      <p class="quiet">Under sail, open Pacific</p>
-      <p>The same ritual, taken out of the harbour. The cold plunge becomes the ocean.</p>
-    </article>
-    
+<section class="split photo-left">
+  <div class="shot">
+    <img src="/assets/img/oak.jpg" srcset="/assets/img/oak-640.jpg 640w, /assets/img/oak.jpg 1170w" sizes="(min-width:56rem) 50vw, 100vw" alt="An oak venik, soaked and ready" loading="lazy" width="1170" height="785">
+    <div class="grain"></div>
   </div>
-</section>
-
-<section class="band gallery-band">
-  <h2>The work</h2>
-  <div class="gallery">
-  
+  <div class="text">
+    <span class="lab">Access</span>
+    <h2>Three rules</h2>
+    
+    <div class="rule-item">
+      <h3>Apply, do not book</h3>
+      <p class="body">There are no walk-ins and no open calendar. Every session starts with a message. The application is a filter that protects both sides.</p>
+    </div>
+    
+    <div class="rule-item">
+      <h3>Digital surrender</h3>
+      <p class="body">Phones are collected at boarding. Not suggested — required. Without it the nervous system does not let go.</p>
+    </div>
+    
+    <div class="rule-item">
+      <h3>The invitation</h3>
+      <p class="body">Proven members hold a wooden token that lets them bring one person in. It cannot be bought. The club grows by trust or it does not grow.</p>
+    </div>
+    
   </div>
 </section>
 
-<section class="band">
-  <h2>How access works</h2>
-  
-  <div class="rule">
-    <h3>Apply, do not book</h3>
-    <p>There are no walk-ins and no open calendar. Every session starts with a message. The application is a filter that protects both sides.</p>
+<section class="band-cold">
+  <img src="/assets/img/dive.jpg" srcset="/assets/img/dive-640.jpg 640w, /assets/img/dive.jpg 1170w" sizes="100vw" alt="A guest suspended under the surface" loading="lazy" width="1170" height="1218">
+  <div class="scrim"></div>
+  <div class="grain"></div>
+  <div class="inner">
+    <span class="lab">By application only</span>
+    <p class="big">Heat. Water.<br>Silence. Return.</p>
+    <p class="body">Tell us who you are and roughly when suits you. A master replies to arrange the date. Nothing is charged until you have agreed it.</p>
+    <a class="btn btn-cold" href="/apply/">Apply</a>
   </div>
-  
-  <div class="rule">
-    <h3>Digital surrender</h3>
-    <p>Phones are collected at boarding. Not suggested — required. Without it the nervous system does not let go.</p>
-  </div>
-  
-  <div class="rule">
-    <h3>The invitation</h3>
-    <p>Proven members hold a wooden token that lets them bring one person in. It cannot be bought. The club grows by trust or it does not grow.</p>
-  </div>
-  
-  <p class="actions"><a class="btn" href="/apply/">Apply</a></p>
 </section>
 </main>
 <footer class="site">
-  <div class="f-grid">
-    <div>
-      <p class="f-name">The Banya Lab</p>
-      <p class="quiet">Authentic Russian banya. Not a sauna.</p>
-      <p class="quiet">Ala Wai Harbor, Honolulu</p>
-    </div>
-    <div>
-      <p><a href="/ritual/">The two rituals</a></p>
-      <p><a href="/masters/">The masters</a></p>
-      <p><a href="/answers/">Answers</a></p>
-      <p><a href="/apply/">Apply</a></p>
-    </div>
-    <div>
-      <p><a href="https://instagram.com/banya_lab_hawaii" rel="noopener">Instagram</a></p>
-      <p class="quiet">—</p>
-      <p class="quiet">—</p>
-    </div>
+  <div>
+    <p class="f-name">The Banya Lab</p>
+    <p class="lab lab-quiet">Ala Wai Harbor, Honolulu · Est. 2026</p>
   </div>
-  <p class="f-legal quiet">© 2026 The Banya Lab · Updated 2026-09-02</p>
+  <nav aria-label="Footer">
+    <div>
+      <a href="/ritual/">Ritual</a>
+      <a href="/masters/">Masters</a>
+    </div>
+    <div>
+      <a href="/answers/">Answers</a>
+      <a href="/apply/">Apply</a>
+    </div>
+    <div>
+      <a href="https://instagram.com/banya_lab_hawaii" rel="noopener">Instagram</a>
+      <a href="">—</a>
+    </div>
+  </nav>
 </footer>
 </body>
 </html>

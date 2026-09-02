@@ -1,24 +1,23 @@
 </main>
 <footer class="site">
-  <div class="f-grid">
-    <div>
-      <p class="f-name">{{business.name}}</p>
-      <p class="quiet">{{business.oneLine}}</p>
-      <p class="quiet">{{business.baseLocation}}</p>
-    </div>
-    <div>
-      <p><a href="/ritual/">The two rituals</a></p>
-      <p><a href="/masters/">The masters</a></p>
-      <p><a href="/answers/">Answers</a></p>
-      <p><a href="/apply/">Apply</a></p>
-    </div>
-    <div>
-      <p><a href="{{business.instagram}}" rel="noopener">Instagram</a></p>
-      <p class="quiet">{{business.phoneDisplay}}</p>
-      <p class="quiet">{{business.email}}</p>
-    </div>
+  <div>
+    <p class="f-name">{{business.name}}</p>
+    <p class="lab lab-quiet">{{business.baseLocation}} · Est. {{business.foundedYear}}</p>
   </div>
-  <p class="f-legal quiet">© {{computed.year}} {{business.name}} · Updated {{computed.buildDate}}</p>
+  <nav aria-label="Footer">
+    <div>
+      <a href="/ritual/">Ritual</a>
+      <a href="/masters/">Masters</a>
+    </div>
+    <div>
+      <a href="/answers/">Answers</a>
+      <a href="/apply/">Apply</a>
+    </div>
+    <div>
+      <a href="{{business.instagram}}" rel="noopener">Instagram</a>
+      <a href="{{computed.telHref}}">{{business.phoneDisplay}}</a>
+    </div>
+  </nav>
 </footer>
 </body>
 </html>

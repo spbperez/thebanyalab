@@ -1,18 +1,28 @@
 {{> _head}}
 <section class="page-head">
-  <h1>The masters</h1>
-  <p class="lead">A brand can be copied. A venik can be ordered. A boat can be bought. A master cannot be replicated.</p>
+  <span class="lab">The guild</span>
+  <h1>A master cannot be replicated.</h1>
+  <p class="body">A brand can be copied. A venik can be ordered. A boat can be bought. This is our long-term defence, and it is why every master here is named.</p>
 </section>
-{{#each masters}}
-<section class="band">
-  <h2>{{name}}</h2>
-  <p class="quiet">{{role}} · from {{from}}</p>
-  {{#each photos}}<figure class="portrait"><img src="{{src}}" alt="{{alt}}" loading="lazy" width="1000" height="1250"></figure>{{/each}}
-  <p>{{body}}</p>
+
+<section class="split photo-right">
+  <div class="text">
+    {{#each masters}}
+    <div class="rule-item">
+      <h3>{{name}}</h3>
+      <p class="lab lab-quiet" style="margin:.5rem 0 .8rem">{{role}} · from {{from}}</p>
+      <p class="body">{{body}}</p>
+    </div>
+    {{/each}}
+  </div>
+  <div class="shot">
+    <img src="{{mastersPhoto.src}}" srcset="{{mastersPhoto.small}} 640w, {{mastersPhoto.src}} 1170w" sizes="(min-width:56rem) 50vw, 100vw" alt="{{mastersPhoto.alt}}" loading="lazy" width="1170" height="785">
+    <div class="grain"></div>
+  </div>
 </section>
-{{/each}}
+
 <section class="band">
-  <p class="lead">{{guild}}</p>
-  <p class="actions"><a class="btn" href="/apply/">Apply for a session</a></p>
+  <p class="body">{{guild}}</p>
+  <p style="margin-top:2.6rem"><a class="btn" href="/apply/">Apply for a session</a></p>
 </section>
 {{> _footer}}

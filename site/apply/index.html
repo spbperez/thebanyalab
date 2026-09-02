@@ -12,11 +12,15 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="/apply/">
 <meta name="theme-color" content="#0A0A0A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Archivo:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="/assets/css/theme.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"HealthAndBeautyBusiness","@id":"/#business","name":"The Banya Lab","description":"Banya is the Russian heat ritual — a thousand years old, practiced by masters with oak branches, wet steam and cold water. We brought it to Hawaii.","url":"/","priceRange":"$$$","image":"/assets/img/og.jpg","address":{"@type":"PostalAddress","addressLocality":"Honolulu","addressRegion":"HI","addressCountry":"US"},"areaServed":[{"@type":"City","name":"Honolulu"},{"@type":"City","name":"Oahu"}],"sameAs":["https://instagram.com/banya_lab_hawaii"]},{"@type":"WebPage","@id":"/apply/#page","url":"/apply/","name":"Apply — The Banya Lab","isPartOf":{"@id":"/#business"},"dateModified":"2026-09-02"}]}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="scale" aria-hidden="true"></div>
 <header class="site">
   <a class="wordmark" href="/">The Banya Lab</a>
   <nav aria-label="Main">
@@ -28,57 +32,71 @@
 </header>
 <main id="main">
 
-<section class="page-head">
-  <h1>Apply</h1>
-  <p class="lead">Tell us who you are and roughly when suits you. A master replies to arrange the date. Nothing is charged until you have agreed it.</p>
-</section>
-<section class="band">
-  <form class="apply" method="POST" action="/api/lead">
-    <p class="hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></p>
+<section class="apply-grid">
+  <div class="shot">
+    <img src="/assets/img/bench.jpg" srcset="/assets/img/bench-640.jpg 640w, /assets/img/bench.jpg 1170w" sizes="(min-width:56rem) 50vw, 100vw" alt="A guest on the bench between rounds" loading="lazy" width="1170" height="785">
+    <div class="scrim"></div>
+    <div class="grain"></div>
+    <div class="cap">
+      <p>Not everyone fits the room.</p>
+      <p class="body" style="font-size:.9375rem;margin-top:1rem">Sessions are small, the masters are few, and the ocean has an opinion about the schedule. A person answers you, not a calendar.</p>
+    </div>
+  </div>
+  <div class="form-side">
+    <span class="lab">Apply</span>
+    <h2 style="margin:1.4rem 0 1.2rem">Tell us when suits you.</h2>
+    <p class="body">Tell us who you are and roughly when suits you. A master replies to arrange the date. Nothing is charged until you have agreed it.</p>
 
-    <p><label for="f-name">Your name</label>
-      <input id="f-name" name="name" type="text" autocomplete="name" required maxlength="80"></p>
+    <form class="apply" method="POST" action="/api/lead">
+      <p class="hp" aria-hidden="true"><label for="f-company">Company</label><input id="f-company" type="text" name="company" tabindex="-1" autocomplete="off"></p>
 
-    <p><label for="f-phone">Phone</label>
-      <input id="f-phone" name="phone" type="tel" autocomplete="tel" required maxlength="30" inputmode="tel"></p>
+      <div><label for="f-name">Your name</label>
+        <input id="f-name" name="name" type="text" autocomplete="name" required maxlength="80"></div>
 
-    <p><label for="f-email">Email</label>
-      <input id="f-email" name="email" type="email" autocomplete="email" required maxlength="120"></p>
+      <div class="pair">
+        <div><label for="f-phone">Phone</label>
+          <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required maxlength="30"></div>
+        <div><label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required maxlength="120"></div>
+      </div>
 
-    <p><label for="f-people">How many people</label>
-      <input id="f-people" name="people" type="number" min="1" max="8" step="1" required></p>
+      <div class="pair">
+        <div><label for="f-people">How many people</label>
+          <input id="f-people" name="people" type="number" min="1" max="8" step="1" required></div>
+        <div><label for="f-when">When suits you</label>
+          <input id="f-when" name="when" type="text" required maxlength="120" placeholder="Next week, evenings"></div>
+      </div>
 
-    <p><label for="f-when">When suits you</label>
-      <input id="f-when" name="when" type="text" required maxlength="120" placeholder="Next week, evenings"></p>
+      <div><label for="f-message">Anything we should know</label>
+        <textarea id="f-message" name="message" rows="3" maxlength="1200"></textarea></div>
 
-    <p><label for="f-message">Anything we should know</label>
-      <textarea id="f-message" name="message" rows="4" maxlength="1200"></textarea></p>
-
-    <p class="quiet">We use this to reply to you about a session. Nothing else.</p>
-    <p><button class="btn" type="submit">Send application</button></p>
-  </form>
+      <div class="send">
+        <button class="btn btn-solid" type="submit">Send application</button>
+        <span class="note">We use this to reply to you about a session. Nothing else.</span>
+      </div>
+    </form>
+  </div>
 </section>
 </main>
 <footer class="site">
-  <div class="f-grid">
-    <div>
-      <p class="f-name">The Banya Lab</p>
-      <p class="quiet">Authentic Russian banya. Not a sauna.</p>
-      <p class="quiet">Ala Wai Harbor, Honolulu</p>
-    </div>
-    <div>
-      <p><a href="/ritual/">The two rituals</a></p>
-      <p><a href="/masters/">The masters</a></p>
-      <p><a href="/answers/">Answers</a></p>
-      <p><a href="/apply/">Apply</a></p>
-    </div>
-    <div>
-      <p><a href="https://instagram.com/banya_lab_hawaii" rel="noopener">Instagram</a></p>
-      <p class="quiet">—</p>
-      <p class="quiet">—</p>
-    </div>
+  <div>
+    <p class="f-name">The Banya Lab</p>
+    <p class="lab lab-quiet">Ala Wai Harbor, Honolulu · Est. 2026</p>
   </div>
-  <p class="f-legal quiet">© 2026 The Banya Lab · Updated 2026-09-02</p>
+  <nav aria-label="Footer">
+    <div>
+      <a href="/ritual/">Ritual</a>
+      <a href="/masters/">Masters</a>
+    </div>
+    <div>
+      <a href="/answers/">Answers</a>
+      <a href="/apply/">Apply</a>
+    </div>
+    <div>
+      <a href="https://instagram.com/banya_lab_hawaii" rel="noopener">Instagram</a>
+      <a href="">—</a>
+    </div>
+  </nav>
 </footer>
 </body>
 </html>
