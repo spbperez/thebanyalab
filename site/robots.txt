@@ -30,3 +30,4 @@ Allow: /
 Disallow: /pay/
 Disallow: /thanks/
 
+Sitemap: https://thebanyalab.com/sitemap.xml
