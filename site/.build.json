@@ -1,6 +1,6 @@
 {
   "draft": true,
-  "builtAt": "2026-09-02T11:16:03.994Z",
+  "builtAt": "2026-09-02T11:27:40.968Z",
   "pages": [
     "/",
     "/ritual/",
@@ -15,5 +15,5 @@
     "/pay/",
     "/thanks/"
   ],
-  "clientHash": "1290efa1847c2f"
+  "clientHash": "cf896fb6160ab"
 }

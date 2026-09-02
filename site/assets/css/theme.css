@@ -184,3 +184,19 @@ footer.site{border-top:1px solid var(--hair);padding:var(--gap) var(--pad) 3rem}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
+
+/* ---------- фото ---------- */
+figure{margin:0}
+figure img{width:100%;object-fit:cover;filter:saturate(.92)}
+.bleed img{aspect-ratio:16/9;max-height:70svh}
+.wide{margin:2rem 0}
+.wide img{aspect-ratio:3/2}
+.portrait{max-width:22rem;margin:1.5rem 0}
+.portrait img{aspect-ratio:4/5}
+.gallery{display:grid;gap:1px;background:var(--hair);margin-top:2rem}
+.gallery figure{background:var(--ink)}
+.gallery img{aspect-ratio:4/3}
+.gallery figcaption{padding:.7rem .9rem 1.1rem;color:var(--dim);font-size:.8125rem}
+.gallery-band>.gallery{max-width:none}
+@media (min-width:40rem){ .gallery{grid-template-columns:1fr 1fr} }
+@media (min-width:64rem){ .gallery{grid-template-columns:repeat(3,1fr)} }

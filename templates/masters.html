@@ -7,6 +7,7 @@
 <section class="band">
   <h2>{{name}}</h2>
   <p class="quiet">{{role}} · from {{from}}</p>
+  {{#each photos}}<figure class="portrait"><img src="{{src}}" alt="{{alt}}" loading="lazy" width="1000" height="1250"></figure>{{/each}}
   <p>{{body}}</p>
 </section>
 {{/each}}

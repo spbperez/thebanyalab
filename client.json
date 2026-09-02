@@ -1,6 +1,5 @@
 {
   "_note": "Единственный источник данных. Ни одной цифры мимо этого файла. null = ещё не получено от владельца; сборка на нём падает.",
-
   "business": {
     "name": "The Banya Lab",
     "gbpName": null,
@@ -18,20 +17,28 @@
     "showPhoneInHeader": false,
     "showAddress": false,
     "baseLocation": "Ala Wai Harbor, Honolulu",
-    "address": { "street": null, "city": "Honolulu", "state": "HI", "zip": null, "country": "US" },
-    "areaServed": ["Honolulu", "Oahu"],
+    "address": {
+      "street": null,
+      "city": "Honolulu",
+      "state": "HI",
+      "zip": null,
+      "country": "US"
+    },
+    "areaServed": [
+      "Honolulu",
+      "Oahu"
+    ],
     "hours": null,
     "foundedYear": null,
     "priceRange": "$$$",
     "schemaType": "HealthAndBeautyBusiness"
   },
-
   "hero": {
     "line": "You are not sitting in a room.",
     "sub": "You are worked on.",
-    "body": "Banya is the Russian heat ritual — a thousand years old, practiced by masters with oak branches, wet steam and cold water. A sailing vessel in Ala Wai Harbor is where we hold it."
+    "body": "Banya is the Russian heat ritual — a thousand years old, practiced by masters with oak branches, wet steam and cold water. A sailing vessel in Ala Wai Harbor is where we hold it.",
+    "image": []
   },
-
   "manifesto": [
     "We do not sell sauna.",
     "We do not sell relaxation.",
@@ -40,16 +47,15 @@
     "The silence that comes after the heat.",
     "The version of you that forgot how to breathe."
   ],
-
   "lab": {
     "title": "The Lab",
     "body": [
       "Most banyas abroad replicate a fixed template — the same parilka, the same temperature, the same protocol, every time. We respect the tradition, and we do not stop there.",
       "In a country the size of Russia the ritual split into hundreds of local variations — Siberian, Altai, Karelian, Ural, village traditions that never reached a textbook. Our masters come from that living tradition and keep working inside it. We read old practitioner notes. We travel back to masters who carry local knowledge. We test, we keep what works, we discard what does not.",
-      "That is what Lab means. Same ancient foundation. Active experimentation on top of it."
+      "It also means no two masters here work the same way. Max builds hard contrast and drives it through you. Yura reads your breath and skin and balances the steam on the edge of what your body will take. Same ritual, different hands, and you will feel which one you are under.",
+      "That is what Lab means. Same ancient foundation. Active experimentation on top of it. Every session is, in some small way, an experiment — and you are in the room for it."
     ]
   },
-
   "rituals": [
     {
       "slug": "lab-session",
@@ -68,10 +74,19 @@
       "duration": "About 2 hours",
       "capacity": "1 to 4 guests",
       "prices": [
-        { "label": "With Master Yura", "amount": "$175", "unit": "per person" },
-        { "label": "With Master Max — the Signature Reset", "amount": "$250", "unit": "per person" }
+        {
+          "label": "With Master Yura",
+          "amount": "$175",
+          "unit": "per person"
+        },
+        {
+          "label": "With Master Max — the Signature Reset",
+          "amount": "$250",
+          "unit": "per person"
+        }
       ],
-      "minimum": "$600 minimum per session. One or two guests cover it together."
+      "minimum": "$600 minimum per session. One or two guests cover it together.",
+      "photos": []
     },
     {
       "slug": "ocean-session",
@@ -89,7 +104,11 @@
       "duration": "About 3 hours",
       "capacity": "4 to 5 guests",
       "prices": [
-        { "label": "Private outing", "amount": "$1,000–1,200", "unit": "for the group" }
+        {
+          "label": "Private outing",
+          "amount": "$1,000–1,200",
+          "unit": "for the group"
+        }
       ],
       "minimum": "By application. Members of the Lab first.",
       "isNot": [
@@ -97,59 +116,138 @@
         "Not a party. No dancing, no speakers, no crowd.",
         "Not a tourist experience. We do not take walk-ins.",
         "Not a photo shoot. Phones are surrendered at boarding."
-      ]
+      ],
+      "photos": []
     }
   ],
-
   "masters": [
     {
       "name": "Max",
       "role": "Founder & Head Master",
       "from": "Russia",
       "body": "Twelve years in the craft, trained across several Russian schools, still refining. The Signature Reset is his: deep transformation through hard contrast. Aggressive, precise, uncompromising. For those who need to break something inside to come back whole.",
-      "photo": null
+      "photos": []
     },
     {
       "name": "Yura",
       "role": "Master",
       "from": "Ukraine",
       "body": "The jeweller. Reads the state of the guest exactly — breath, skin, posture — and balances the steam on the edge of what a body will take. The full depth of the ritual, delivered with surgical care.",
-      "photo": null
+      "photos": []
     }
   ],
-
   "guild": "Our masters are Russian and Ukrainian. They share a craft older than any border. We honour the craft, not any state, and we say that openly.",
-
   "access": [
-    { "title": "Apply, do not book", "body": "There are no walk-ins and no open calendar. Every session starts with a message. The application is a filter that protects both sides." },
-    { "title": "Digital surrender", "body": "Phones are collected at boarding. Not suggested — required. Without it the nervous system does not let go." },
-    { "title": "The invitation", "body": "Proven members hold a wooden token that lets them bring one person in. It cannot be bought. The club grows by trust or it does not grow." }
+    {
+      "title": "Apply, do not book",
+      "body": "There are no walk-ins and no open calendar. Every session starts with a message. The application is a filter that protects both sides."
+    },
+    {
+      "title": "Digital surrender",
+      "body": "Phones are collected at boarding. Not suggested — required. Without it the nervous system does not let go."
+    },
+    {
+      "title": "The invitation",
+      "body": "Proven members hold a wooden token that lets them bring one person in. It cannot be bought. The club grows by trust or it does not grow."
+    }
   ],
-
   "comparison": {
     "title": "Banya is not a sauna",
     "note": "Most Americans picture the cedar box at the gym. That runs at 150–175°F and often bans water on the stones outright. Here is the actual difference.",
-    "columns": ["US gym sauna", "Finnish sauna", "Russian banya"],
+    "columns": [
+      "US gym sauna",
+      "Finnish sauna",
+      "Russian banya"
+    ],
     "rows": [
-      { "label": "Temperature", "values": ["150–175°F", "175–200°F", "180–210°F"] },
-      { "label": "Humidity", "values": ["~5%", "10–20%", "50–60%"] },
-      { "label": "Water on stones", "values": ["Often banned", "Yes — löyly", "Yes, plentiful"] },
-      { "label": "Tool", "values": ["None", "Sometimes vihta", "Venik — oak or birch"] },
-      { "label": "Attendant", "values": ["None", "None", "A master works on you"] },
-      { "label": "Duration", "values": ["10–15 min", "15–20 min", "2 hours, several rounds"] },
-      { "label": "After", "values": ["Shower", "Cold pour or lake", "Cold plunge or ocean"] },
-      { "label": "Purpose", "values": ["A quick sweat", "Heat the body", "Reset the nervous system"] }
+      {
+        "label": "Temperature",
+        "values": [
+          "150–175°F",
+          "175–200°F",
+          "180–210°F"
+        ]
+      },
+      {
+        "label": "Humidity",
+        "values": [
+          "~5%",
+          "10–20%",
+          "50–60%"
+        ]
+      },
+      {
+        "label": "Water on stones",
+        "values": [
+          "Often banned",
+          "Yes — löyly",
+          "Yes, plentiful"
+        ]
+      },
+      {
+        "label": "Tool",
+        "values": [
+          "None",
+          "Sometimes vihta",
+          "Venik — oak or birch"
+        ]
+      },
+      {
+        "label": "Attendant",
+        "values": [
+          "None",
+          "None",
+          "A master works on you"
+        ]
+      },
+      {
+        "label": "Duration",
+        "values": [
+          "10–15 min",
+          "15–20 min",
+          "2 hours, several rounds"
+        ]
+      },
+      {
+        "label": "After",
+        "values": [
+          "Shower",
+          "Cold pour or lake",
+          "Cold plunge or ocean"
+        ]
+      },
+      {
+        "label": "Purpose",
+        "values": [
+          "A quick sweat",
+          "Heat the body",
+          "Reset the nervous system"
+        ]
+      }
     ]
   },
-
   "vocabulary": [
-    { "term": "Banya", "meaning": "The ritual itself. Never sauna, never steam room, never bathhouse." },
-    { "term": "Par", "meaning": "The act of working the body with steam and venik. The verb and the craft." },
-    { "term": "Venik", "meaning": "A bundle of fresh oak or birch branches, used by the master." },
-    { "term": "Master", "meaning": "Never attendant, never therapist. The master leads the ritual." },
-    { "term": "Afterglow", "meaning": "The state afterwards. What people come back for." }
+    {
+      "term": "Banya",
+      "meaning": "The ritual itself. Never sauna, never steam room, never bathhouse."
+    },
+    {
+      "term": "Par",
+      "meaning": "The act of working the body with steam and venik. The verb and the craft."
+    },
+    {
+      "term": "Venik",
+      "meaning": "A bundle of fresh oak or birch branches, used by the master."
+    },
+    {
+      "term": "Master",
+      "meaning": "Never attendant, never therapist. The master leads the ritual."
+    },
+    {
+      "term": "Afterglow",
+      "meaning": "The state afterwards. What people come back for."
+    }
   ],
-
   "answers": [
     {
       "slug": "is-banya-the-same-as-a-sauna",
@@ -207,7 +305,6 @@
       "updated": "2026-09-02"
     }
   ],
-
   "apply": {
     "title": "Apply",
     "intro": "Tell us who you are and roughly when suits you. A master replies to arrange the date. Nothing is charged until you have agreed it.",
@@ -222,25 +319,31 @@
     "consent": "We use this to reply to you about a session. Nothing else.",
     "submit": "Send application"
   },
-
   "pay": {
     "title": "Payment",
     "intro": "This page is for guests whose date is already confirmed. Payment goes to the business and produces a receipt.",
     "links": [],
     "note": "If you have not spoken to a master yet, start with an application."
   },
-
   "thanks": {
     "title": "Received",
     "body": "A master will come back to you shortly to arrange a date. Nothing is charged until you have agreed it."
   },
-
   "seo": {
     "titleSuffix": "Authentic Russian Banya · Honolulu",
     "description": "Authentic Russian banya in Honolulu — the thousand-year-old heat ritual, held by masters on a sailing vessel in Ala Wai Harbor. Not a sauna."
   },
-
   "licenses": [],
-
-  "aiCrawlers": ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-Web", "PerplexityBot", "Google-Extended", "CCBot", "Applebot-Extended"]
+  "aiCrawlers": [
+    "GPTBot",
+    "OAI-SearchBot",
+    "ChatGPT-User",
+    "ClaudeBot",
+    "Claude-Web",
+    "PerplexityBot",
+    "Google-Extended",
+    "CCBot",
+    "Applebot-Extended"
+  ],
+  "gallery": []
 }

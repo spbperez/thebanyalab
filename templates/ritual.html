@@ -10,6 +10,8 @@
   <p class="quiet">{{stage}}</p>
   <p class="lead">{{summary}}</p>
 
+  {{#each photos}}<figure class="wide"><img src="{{src}}" alt="{{alt}}" loading="lazy" width="1600" height="1067"></figure>{{/each}}
+
   <h3>The flow</h3>
   <ol class="flow">{{#each flow}}<li>{{this}}</li>{{/each}}</ol>
 

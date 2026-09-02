@@ -6,6 +6,8 @@
   <p class="actions"><a class="btn" href="/apply/">Apply for a session</a></p>
 </section>
 
+{{#each hero.image}}<figure class="bleed"><img src="{{src}}" alt="{{alt}}" width="2000" height="1125"></figure>{{/each}}
+
 <section class="band manifesto">
   {{#each manifesto}}<p>{{this}}</p>
   {{/each}}
@@ -41,6 +43,15 @@
       <p>{{summary}}</p>
     </article>
     {{/each}}
+  </div>
+</section>
+
+<section class="band gallery-band">
+  <h2>The work</h2>
+  <div class="gallery">
+  {{#each gallery}}
+    <figure><img src="{{src}}" alt="{{alt}}" loading="lazy" width="1200" height="900"><figcaption>{{caption}}</figcaption></figure>
+  {{/each}}
   </div>
 </section>
 
