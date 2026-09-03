@@ -11,7 +11,7 @@ for f in docs/specs/[0-9][0-9][0-9]-*.md; do
   n=$(basename "$f" | cut -c1-3)
   st=$(grep -m1 '^Статус:' "$f" | sed 's/^Статус: *//; s/ *·.*//')
   name=$(grep -m1 '^# ТЗ' "$f" | sed 's/^# ТЗ [0-9]* — //')
-  printf '    %s  %-18s %s\n' "$n" "$st" "$name"
+  printf '    %s  %s  ·  %s\n' "$n" "$name" "$st"
   last=$((10#$n))
 done
 printf '\n  Следующий свободный номер: %03d\n\n' $((last + 1))
