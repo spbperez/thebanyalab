@@ -3,7 +3,7 @@
 Статический сайт. Ни одной цифры мимо `client.json`.
 
 ```
-client.json  ──►  scripts/build.mjs  ──►  site/  ──►  git push  ──►  Cloudflare Pages
+client.json  ──►  scripts/build.mjs  ──►  site/  ──►  git push  ──►  Cloudflare Workers
 ```
 
 ## Команды
@@ -29,7 +29,8 @@ client.json  ──►  scripts/build.mjs  ──►  site/  ──►  git push
     assets/css/theme.css единственное, что правится визуально под клиента
     assets/img/          настоящие фото с объектов
     site/                генерируется. Руками не трогать
-    functions/api/lead.js приём заявки: honeypot → валидация → Telegram + email → /thanks
+    worker/index.js      приём заявки: honeypot → валидация → Telegram + email → /thanks
+    wrangler.jsonc       что раздаётся статикой, что уходит в код
     docs/specs/          ТЗ и записи решений, по одному файлу на решение
     docs/DESIGN.md       визуальное решение и почему именно оно
     docs/SETUP.md        порядок запуска

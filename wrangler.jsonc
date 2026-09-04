@@ -1,0 +1,13 @@
+{
+  // Статика лежит в ./site и собирается из client.json командой npm run build.
+  // Worker получает только те запросы, которым не нашлось файла — то есть /api/lead.
+  "name": "thebanyalab",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./site",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none"
+  },
+  "observability": { "enabled": true }
+}

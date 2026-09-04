@@ -7,5 +7,8 @@
     "build:draft": "node scripts/build.mjs --draft",
     "check": "node scripts/check.mjs",
     "preview": "node scripts/preview.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "^4"
   }
 }

@@ -1,8 +1,9 @@
-// Приём заявки. Без базы: заявка живёт только в момент отправки,
-// поэтому два независимых канала — Telegram и email. Один упал, второй доставил.
+// Единственный вход Worker'а. Статику раздаёт Cloudflare из ./site до того,
+// как сюда дойдёт запрос — здесь остаётся только то, чего нет среди файлов.
+//
+// Приём заявки. Без базы: заявка живёт только в момент отправки, поэтому два
+// независимых канала — Telegram и email. Один упал, второй доставил.
 // Переменные: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, RESEND_API_KEY, FROM_EMAIL, OWNER_EMAIL
-
-const REDIRECT = (url, to) => Response.redirect(new URL(to, url).toString(), 303)
 
 const toE164 = raw => {
   const s = String(raw).trim()
@@ -17,14 +18,24 @@ const toE164 = raw => {
 }
 
 const clean = (v, max) => String(v ?? '').trim().slice(0, max)
+const seeOther = to => new Response(null, { status: 303, headers: { location: to } })
+const text = (body, status) => new Response(body, { status, headers: { 'content-type': 'text/plain; charset=utf-8' } })
 
-export async function onRequestPost ({ request, env }) {
-  const url = request.url
+export default {
+  async fetch (request, env) {
+    const url = new URL(request.url)
+    if (url.pathname !== '/api/lead') return text('Not found', 404)
+    if (request.method !== 'POST') return text('Method not allowed', 405)
+    return handleLead(request, env)
+  }
+}
+
+async function handleLead (request, env) {
   let form
-  try { form = await request.formData() } catch { return new Response('Bad request', { status: 400 }) }
+  try { form = await request.formData() } catch { return text('Bad request', 400) }
 
   // honeypot: стоит ноль, закрывает примитивных ботов
-  if (clean(form.get('company'), 100)) return REDIRECT(url, '/thanks/')
+  if (clean(form.get('company'), 100)) return seeOther('/thanks/')
 
   const name = clean(form.get('name'), 80)
   const email = clean(form.get('email'), 120)
@@ -38,11 +49,7 @@ export async function onRequestPost ({ request, env }) {
   if (!phone) errors.push('phone')
   if (!/^[^@\s]+@[^@\s.]+\.[^@\s]+$/.test(email)) errors.push('email')
   if (!when) errors.push('when')
-  if (errors.length) {
-    return new Response('Please check: ' + errors.join(', '), {
-      status: 400, headers: { 'content-type': 'text/plain; charset=utf-8' }
-    })
-  }
+  if (errors.length) return text('Please check: ' + errors.join(', '), 400)
 
   const received = new Date().toLocaleString('en-US', { timeZone: 'Pacific/Honolulu' })
   const lines = [
@@ -64,37 +71,33 @@ export async function onRequestPost ({ request, env }) {
   const failed = results.filter(r => r.status === 'rejected')
   if (failed.length === results.length) {
     console.error('LEAD LOST - both channels failed', lines, failed.map(f => String(f.reason)))
-    return new Response('We could not deliver your application. Please write to us on Instagram.', {
-      status: 502, headers: { 'content-type': 'text/plain; charset=utf-8' }
-    })
+    return text('We could not deliver your application. Please write to us on Instagram.', 502)
   }
   if (failed.length) console.error('lead: channel failed', failed.map(f => String(f.reason)))
 
-  return REDIRECT(url, '/thanks/')
+  return seeOther('/thanks/')
 }
 
-async function sendTelegram (env, text) {
+async function sendTelegram (env, body) {
   if (!env.TELEGRAM_BOT_TOKEN || !env.TELEGRAM_CHAT_ID) throw new Error('telegram not configured')
   const api = 'https://api.telegram.org/bot' + env.TELEGRAM_BOT_TOKEN + '/sendMessage'
   const r = await fetch(api, {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ chat_id: env.TELEGRAM_CHAT_ID, text, disable_web_page_preview: true })
+    body: JSON.stringify({ chat_id: env.TELEGRAM_CHAT_ID, text: body, disable_web_page_preview: true })
   })
   if (!r.ok) throw new Error('telegram ' + r.status + ' ' + await r.text())
 }
 
-async function sendEmail (env, name, phone, text) {
+async function sendEmail (env, name, phone, body) {
   if (!env.RESEND_API_KEY || !env.OWNER_EMAIL || !env.FROM_EMAIL) throw new Error('email not configured')
   const r = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: { authorization: 'Bearer ' + env.RESEND_API_KEY, 'content-type': 'application/json' },
     body: JSON.stringify({
       from: env.FROM_EMAIL, to: [env.OWNER_EMAIL],
-      subject: 'Application - ' + name + ' - ' + phone, text
+      subject: 'Application - ' + name + ' - ' + phone, text: body
     })
   })
   if (!r.ok) throw new Error('resend ' + r.status + ' ' + await r.text())
 }
-
-export const onRequestGet = () => new Response('Method not allowed', { status: 405 })

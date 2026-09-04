@@ -52,17 +52,26 @@ Cloudflare просканирует существующие записи и в�
 Обычно расходится за минуты, иногда до суток. Пока не разошлось,
 в Cloudflare зона висит как Pending.
 
-### 3.2 Создать проект Pages
+### 3.2 Создать проект (Workers)
 
-Workers & Pages → **Create** → Pages → **Connect to Git** → репозиторий `thebanyalab`.
+Мастера Pages в дашборде больше нет — почему переехали, записано в ТЗ 008.
 
-    Framework preset      None
-    Build command         npm run build
-    Build output directory  site
-    Root directory        /
+Workers & Pages → **Create application** → **Import a repository** →
+`spbperez/thebanyalab`. Дальше:
 
-Переменная сборки: `NODE_VERSION` = `22`. Без неё Cloudflare возьмёт свою
-версию по умолчанию, а генератор писан под 22.
+    Project name              thebanyalab
+    Build command             npm run build
+    Deploy command            npx wrangler deploy
+    Path                      /
+
+Раздел **Build variables**: `NODE_VERSION` = `22`. Без неё Cloudflare возьмёт
+свою версию по умолчанию, а генератор писан под двадцать вторую.
+
+API token мастер создаёт сам — «A new token will be created automatically».
+
+Куда что уходит, описано в `wrangler.jsonc`: статика из `./site`, Worker
+получает только `/api/lead`. Указывать output-папку в интерфейсе не нужно,
+её читает wrangler из конфига.
 
 **Сборка упадёт, пока в `client.json` есть незаполненные поля.** Это не
 поломка, это защита: она печатает список того, чего не хватает. Первая
