@@ -23,7 +23,9 @@ const miss=[];(function w(n,t){if(n===null)return miss.push(t);
 if(Array.isArray(n))return n.forEach((v,i)=>w(v,t+"["+i+"]"));
 if(typeof n==="object")Object.entries(n).filter(([k])=>!k.startsWith("_")).forEach(([k,v])=>w(v,t?t+"."+k:k))})(d,"");
 console.log("    ответов в библиотеке: "+d.answers.length);
-console.log("    незаполненных полей: "+miss.length+(miss.length?" — "+miss.join(", "):""));'
+const opt=new Set(d._optional||[]);const block=miss.filter(m=>!opt.has(m));
+console.log("    блокирует сборку: "+(block.length?block.join(", "):"ничего"));
+console.log("    помечено неприменимым: "+miss.filter(m=>opt.has(m)).length);'
 echo
 echo "  Git"
 printf '    ветка %s, коммитов %s, незакоммиченного %s\n\n' \

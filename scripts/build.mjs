@@ -157,7 +157,12 @@ const pageNode = (url, title, modified) => ({
 
 /* ---------- 6. Страницы ---------- */
 const OUT = p('site')
-fs.rmSync(OUT, { recursive: true, force: true })
+try {
+  fs.rmSync(OUT, { recursive: true, force: true })
+} catch {
+  // на смонтированной папке без права на удаление чистка невозможна — пишем поверх
+  console.error('  site/ не удалось очистить, файлы перезаписываются поверх')
+}
 fs.mkdirSync(OUT, { recursive: true })
 
 const built = []
