@@ -173,7 +173,14 @@ const emit = (url, html) => {
   built.push(url)
 }
 
-const base = { ...data, computed: { origin, telHref, year: new Date().getFullYear(), buildDate: today } }
+const base = {
+  ...data,
+  computed: {
+    origin, telHref, year: new Date().getFullYear(), buildDate: today,
+    // пустой массив = строки контакта просто нет, а не пустая ссылка в подвале
+    phoneLinks: b.phone ? [{ href: telHref, label: b.phoneDisplay || b.phone }] : []
+  }
+}
 
 const page = (tplName, url, title, description, extraSchema = [], extra = {}) => {
   const ctx = {

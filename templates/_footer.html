@@ -15,7 +15,7 @@
     </div>
     <div>
       <a href="{{business.instagram}}" rel="noopener">Instagram</a>
-      <a href="{{computed.telHref}}">{{business.phoneDisplay}}</a>
+      {{#each computed.phoneLinks}}<a href="{{href}}">{{label}}</a>{{/each}}
     </div>
   </nav>
 </footer>

@@ -8,7 +8,9 @@
     "business.email",
     "business.address.street",
     "business.address.zip",
-    "business.hours"
+    "business.hours",
+    "business.phone",
+    "business.phoneDisplay"
   ],
   "_optionalWhy": {
     "business.gbpName": "профиля в Google ещё нет — появится, тогда сверка NAP включится сама",
@@ -18,7 +20,9 @@
     "business.email": "контакт — телефон и форма; почта владельца живёт в переменных окружения",
     "business.address.street": "адрес намеренно скрыт: лодка в марине, не адрес приёма",
     "business.address.zip": "то же",
-    "business.hours": "часов приёма нет по устройству бизнеса: сессии по заявке, а не по расписанию"
+    "business.hours": "часов приёма нет по устройству бизнеса: сессии по заявке, а не по расписанию",
+    "business.phone": "номера ещё нет; главное действие на сайте — Apply, телефон появится в подвале и в разметке, как только придёт",
+    "business.phoneDisplay": "то же"
   },
   "business": {
     "name": "The Banya Lab",

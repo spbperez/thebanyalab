@@ -84,7 +84,8 @@ drift.length ? drift.forEach(f => fail('цифры совпадают с verifie
              : ok.push('цифры совпадают с verified.json')
 
 /* 8. JSON-LD */
-const REQUIRED = ['name', 'telephone', 'address', 'areaServed', 'url', 'image', 'priceRange']
+const REQUIRED = ['name', 'address', 'areaServed', 'url', 'image', 'priceRange']
+  .concat(b.phone ? ['telephone'] : [])
   .concat(Array.isArray(b.hours) ? ['openingHoursSpecification'] : [])
 const ldIssues = []
 for (const { file, html } of all) {
