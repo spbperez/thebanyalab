@@ -485,7 +485,15 @@
       "message": "Anything we should know"
     },
     "consent": "We use this to reply to you about a session. Nothing else.",
-    "submit": "Send application"
+    "submit": "Send application",
+    "channel": "instagram",
+    "dm": {
+      "title": "Apply",
+      "heading": "Send us a message.",
+      "intro": "Applications come through Instagram, the way they always have. Tell us your name, how many of you there are and roughly when suits you. A master replies to arrange the date, and nothing is charged until you have agreed it.",
+      "button": "Apply on Instagram",
+      "note": "A booking form lands here shortly. Until then a message reaches a person faster than any form would."
+    }
   },
   "pay": {
     "title": "Payment",

@@ -178,7 +178,9 @@ const base = {
   computed: {
     origin, telHref, year: new Date().getFullYear(), buildDate: today,
     // пустой массив = строки контакта просто нет, а не пустая ссылка в подвале
-    phoneLinks: b.phone ? [{ href: telHref, label: b.phoneDisplay || b.phone }] : []
+    phoneLinks: b.phone ? [{ href: telHref, label: b.phoneDisplay || b.phone }] : [],
+    applyForm: data.apply.channel === 'form' ? [{}] : [],
+    applyDM: data.apply.channel === 'form' ? [] : [{ url: b.instagram }]
   }
 }
 

@@ -10,6 +10,8 @@
     </div>
   </div>
   <div class="form-side">
+
+{{#each computed.applyForm}}
     <span class="lab">{{apply.title}}</span>
     <h2 style="margin:1.4rem 0 1.2rem">Tell us when suits you.</h2>
     <p class="body">{{apply.intro}}</p>
@@ -42,6 +44,14 @@
         <span class="note">{{apply.consent}}</span>
       </div>
     </form>
+{{/each}}
+{{#each computed.applyDM}}
+    <span class="lab">{{apply.dm.title}}</span>
+    <h2 style="margin:1.4rem 0 1.2rem">{{apply.dm.heading}}</h2>
+    <p class="body">{{apply.dm.intro}}</p>
+    <p style="margin-top:2.6rem"><a class="btn btn-solid" href="{{url}}" rel="noopener">{{apply.dm.button}}</a></p>
+    <p class="src" style="margin-top:1.6rem;max-width:44ch">{{apply.dm.note}}</p>
+{{/each}}
   </div>
 </section>
 {{> _footer}}
