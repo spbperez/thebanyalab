@@ -1,5 +1,25 @@
 {
   "_note": "Единственный источник данных. Ни одной цифры мимо этого файла. null = ещё не получено от владельца; сборка на нём падает.",
+  "_optional": [
+    "business.gbpName",
+    "business.gbpUrl",
+    "business.reviewsUrl",
+    "business.legalName",
+    "business.email",
+    "business.address.street",
+    "business.address.zip",
+    "business.hours"
+  ],
+  "_optionalWhy": {
+    "business.gbpName": "профиля в Google ещё нет — появится, тогда сверка NAP включится сама",
+    "business.gbpUrl": "то же",
+    "business.reviewsUrl": "отзывов нет; пока пусто, aggregateRating в разметке запрещён",
+    "business.legalName": "нигде не выводится, нужен только для записей",
+    "business.email": "контакт — телефон и форма; почта владельца живёт в переменных окружения",
+    "business.address.street": "адрес намеренно скрыт: лодка в марине, не адрес приёма",
+    "business.address.zip": "то же",
+    "business.hours": "часов приёма нет по устройству бизнеса: сессии по заявке, а не по расписанию"
+  },
   "business": {
     "name": "The Banya Lab",
     "gbpName": null,

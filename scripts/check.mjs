@@ -21,7 +21,10 @@ const missing = []
   if (Array.isArray(n)) return n.forEach((v, i) => walk(v, t + '[' + i + ']'))
   if (typeof n === 'object') Object.entries(n).filter(([k]) => !k.startsWith('_')).forEach(([k, v]) => walk(v, t ? t + '.' + k : k))
 })(data, '')
-missing.length ? fail('client.json заполнен', missing.length + ' поле(й) пусты: ' + missing.join(', ')) : ok.push('client.json заполнен')
+const optional = new Set(data._optional || [])
+const blocking = missing.filter(m => !optional.has(m))
+blocking.length ? fail('client.json заполнен', blocking.length + ' обязательное(ых) поле(й) пусты: ' + blocking.join(', '))
+                : ok.push('client.json заполнен' + (missing.length ? ' (' + missing.length + ' помечены как неприменимые)' : ''))
 
 /* 2. Лицензии */
 const today = new Date().toISOString().slice(0, 10)
@@ -81,7 +84,8 @@ drift.length ? drift.forEach(f => fail('цифры совпадают с verifie
              : ok.push('цифры совпадают с verified.json')
 
 /* 8. JSON-LD */
-const REQUIRED = ['name', 'telephone', 'address', 'areaServed', 'url', 'image', 'priceRange', 'openingHoursSpecification']
+const REQUIRED = ['name', 'telephone', 'address', 'areaServed', 'url', 'image', 'priceRange']
+  .concat(Array.isArray(b.hours) ? ['openingHoursSpecification'] : [])
 const ldIssues = []
 for (const { file, html } of all) {
   const m = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)

@@ -27,8 +27,10 @@ const walk = (node, trail) => {
     .forEach(([k, v]) => walk(v, trail ? `${trail}.${k}` : k))
 }
 walk(data, '')
-if (missing.length && !DRAFT) {
-  die('В client.json не заполнено ' + missing.length + ' поле(й). Сайт без них не собирается:', missing)
+const optional = new Set(data._optional || [])
+const blocking = missing.filter(m => !optional.has(m))
+if (blocking.length && !DRAFT) {
+  die('В client.json не заполнено ' + blocking.length + ' обязательное(ых) поле(й). Сайт без них не собирается:', blocking)
 }
 
 /* ---------- 2. Лицензии ---------- */
@@ -107,7 +109,7 @@ const render = (tpl, ctx, depth = 0) => {
   return tpl.replace(/\{\{\s*([\w.]+)\s*\}\}/g, (_, expr) => {
     const v = get(ctx, expr)
     if (v === undefined) throw new Error('нет поля {{' + expr + '}}')
-    if (v === null) return DRAFT ? PH : (missing.push(expr), PH)
+    if (v === null) return optional.has(expr) ? '' : PH
     if (expr.startsWith('raw.')) return String(v)
     return esc(v)
   })
@@ -239,4 +241,4 @@ function hash (buf) {
   return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(16)
 }
 
-console.log(`  Собрано ${built.length} страниц${DRAFT ? ' — ЧЕРНОВИК, ' + missing.length + ' поле(й) не заполнено' : ''}`)
+console.log(`  Собрано ${built.length} страниц${DRAFT ? ' — ЧЕРНОВИК, ' + blocking.length + ' обязательное(ых) поле(й) не заполнено' : ''}`)
