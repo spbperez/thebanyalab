@@ -77,17 +77,54 @@ API token мастер создаёт сам — «A new token will be created a
 поломка, это защита: она печатает список того, чего не хватает. Первая
 зелёная сборка = данные собраны.
 
-### 3.3 Привязать домен
+### 3.3 Завести зону
 
-В проекте Pages → **Custom domains** → Add → `thebanyalab.com`, затем
-`www.thebanyalab.com`. Зона в том же аккаунте, поэтому нужные записи
-Cloudflare создаст сам — руками A-записи не заводить.
+Cloudflare → **Add a domain** → `thebanyalab.com` → тариф **Free**.
+Cloudflare просканирует существующие записи и выдаст два своих неймсервера.
 
-Дальше Rules → Redirect Rules: `www.thebanyalab.com/*` → `https://thebanyalab.com/$1`,
-301. Один канонический адрес, иначе Google считает это двумя сайтами,
-а NAP в Google Business Profile должен указывать ровно на один.
+У регистратора, где куплен домен, заменить неймсерверы на выданные.
+Обычно расходится за минуты, иногда до суток. Пока зона в статусе Pending,
+сайт доступен по адресу `*.workers.dev`.
 
-SSL/TLS: Full (strict) и **Always Use HTTPS** — включить.
+### 3.4 Привязать домен к Worker'у
+
+Workers & Pages → проект `thebanyalab` → **Settings** → **Domains & Routes**
+→ **Add** → **Custom Domain** → `thebanyalab.com`.
+
+DNS-запись Cloudflare создаст сам. Руками A- или CNAME-записи для апекса
+не заводить.
+
+### 3.5 www → апекс
+
+**Здесь ловушка Workers.** Custom Domain привязывается к точному имени:
+Worker на `thebanyalab.com` запросы к `www.thebanyalab.com` не увидит.
+Просто добавить www вторым доменом можно, но тогда сайт живёт по двум
+адресам сразу, а NAP в Google Business Profile должен указывать ровно
+на один. Поэтому www не обслуживаем, а перенаправляем.
+
+Два шага, оба обязательны:
+
+1. DNS → добавить запись для `www`, **проксированную** (оранжевое облако).
+   Cloudflare нужен хоть какой-то проксируемый адрес, чтобы применить
+   правило: `AAAA www 100::` — это адрес-«чёрная дыра», трафик до него
+   не доходит, правило срабатывает раньше.
+2. Rules → **Redirect Rules** → Create:
+
+       Если    http.host eq "www.thebanyalab.com"
+       То      Dynamic redirect
+               concat("https://thebanyalab.com", http.request.uri.path)
+               301, Preserve query string — включить
+
+Динамический, а не статический: статический увёл бы все страницы
+на главную и убил бы ссылки на страницы-ответы.
+
+### 3.6 Мелочи, которые забывают
+
+SSL/TLS → **Full (strict)**. Edge Certificates → **Always Use HTTPS** — включить.
+
+Проверить после: `http://www.thebanyalab.com/answers/why-a-venik/` должен
+привести на `https://thebanyalab.com/answers/why-a-venik/` — тот же путь,
+один переход, замок в адресной строке.
 
 ## 4. Переменные и почта
 
