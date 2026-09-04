@@ -1,13 +1,21 @@
 {
   // Статика лежит в ./site и собирается из client.json командой npm run build.
-  // Worker получает только те запросы, которым не нашлось файла — то есть /api/lead.
+  // Домены привязываются здесь же: wrangler заводит их при деплое и сам создаёт
+  // DNS-записи — в панели Cloudflare руками ничего делать не нужно.
   "name": "thebanyalab",
   "main": "worker/index.js",
   "compatibility_date": "2026-09-01",
+  "routes": [
+    { "pattern": "thebanyalab.com", "custom_domain": true },
+    { "pattern": "www.thebanyalab.com", "custom_domain": true }
+  ],
   "assets": {
     "directory": "./site",
+    "binding": "ASSETS",
     "html_handling": "auto-trailing-slash",
-    "not_found_handling": "none"
+    "not_found_handling": "none",
+    // Worker смотрит на запрос первым: иначе www отдавал бы сайт, а не редирект
+    "run_worker_first": true
   },
   "observability": { "enabled": true }
 }

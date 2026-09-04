@@ -24,9 +24,22 @@ const text = (body, status) => new Response(body, { status, headers: { 'content-
 export default {
   async fetch (request, env) {
     const url = new URL(request.url)
-    if (url.pathname !== '/api/lead') return text('Not found', 404)
-    if (request.method !== 'POST') return text('Method not allowed', 405)
-    return handleLead(request, env)
+
+    // Один канонический адрес: www уводим на апекс, сохраняя путь и параметры.
+    // NAP в Google Business Profile должен указывать ровно на один адрес.
+    if (url.hostname.startsWith('www.')) {
+      url.hostname = url.hostname.slice(4)
+      url.protocol = 'https:'
+      return Response.redirect(url.toString(), 301)
+    }
+
+    if (url.pathname === '/api/lead') {
+      if (request.method !== 'POST') return text('Method not allowed', 405)
+      return handleLead(request, env)
+    }
+
+    // Всё остальное — статика из ./site
+    return env.ASSETS.fetch(request)
   }
 }
 
