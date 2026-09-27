@@ -54,7 +54,7 @@
     ],
     "hours": null,
     "foundedYear": 2026,
-    "priceRange": "$$$",
+    "priceRange": "$$",
     "schemaType": "HealthAndBeautyBusiness"
   },
   "hero": {
@@ -125,17 +125,12 @@
       "capacity": "1 to 4 guests",
       "prices": [
         {
-          "label": "With Master Yura",
-          "amount": "$175",
-          "unit": "per person"
-        },
-        {
-          "label": "With Master Max — the Signature Reset",
-          "amount": "$250",
+          "label": "With a master",
+          "amount": "$100",
           "unit": "per person"
         }
       ],
-      "minimum": "$600 minimum per session. One or two guests cover it together.",
+      "minimum": "One rate, either master. The same whether you come alone or bring three.",
       "photos": [
         {
           "src": "/assets/img/green.jpg",
