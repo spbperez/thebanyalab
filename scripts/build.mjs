@@ -177,17 +177,28 @@ const emit = (url, html) => {
 // Пока нет хотя бы одного — страницы /book/ нет вовсе, а не пустая кнопка.
 const bk = data.booking
 const bookOpen = bk.channel === 'square' && !!bk.url
-const bkRitual = data.rituals.find(r => r.slug === bk.ritualSlug) || {}
-// цифры на /book/ берутся из самого ритуала: цена живёт в одном месте
-const bookReadings = [
-  (bkRitual.prices || [])[0]?.amount, bkRitual.duration, bkRitual.capacity
-].map((value, i) => ({ value, label: (bk.readingLabels || [])[i] })).filter(x => x.value)
+// Одна кнопка на сайте ведёт на развилку, а развилка — в Square или в заявку.
+// Цифры у каждой двери берутся из своего ритуала: цена живёт в одном месте.
+const doors = (bk.doors || []).map(d => {
+  const r = data.rituals.find(x => x.slug === d.ritualSlug) || {}
+  return {
+    ...d,
+    href: d.target === 'square' ? bk.url : '/apply/',
+    // одна из двух пуста: внешняя ссылка и внутренняя рисуются по-разному
+    external: d.target === 'square' ? [{}] : [],
+    internal: d.target === 'square' ? [] : [{}],
+    readings: [(r.prices || [])[0]?.amount, r.duration, r.capacity]
+      .map((value, i) => ({ value, label: (d.readingLabels || [])[i] })).filter(x => x.value)
+  }
+})
 
 // Каждому ритуалу своя кнопка: пирс бронируется, море запрашивается (ТЗ 013)
+// На странице ритуалов кнопка ведёт в ту же единственную дверь, только сразу
+// к нужной половине развилки — прямых ссылок на Square по сайту не разбросано.
 const rituals = data.rituals.map(r => ({
   ...r,
-  cta: [bookOpen && r.slug === bk.ritualSlug
-    ? { href: '/book/', label: bk.ctaLabel, note: bk.buttonNote }
+  cta: [bookOpen
+    ? { href: '/book/#' + r.slug, label: r.bookLabel, note: r.bookNote }
     : { href: '/apply/', label: r.applyLabel, note: r.applyNote }]
 }))
 
@@ -200,8 +211,8 @@ const base = {
     phoneLinks: b.phone ? [{ href: telHref, label: b.phoneDisplay || b.phone }] : [],
     applyForm: data.apply.channel === 'form' ? [{}] : [],
     applyDM: data.apply.channel === 'form' ? [] : [{ url: b.instagram }],
-    bookOpen: bookOpen ? [{ href: '/book/', label: bk.navLabel, url: bk.url }] : [],
-    bookReadings,
+    bookOpen: bookOpen ? [{ href: '/book/', label: bk.navLabel }] : [],
+    doors,
     bookClosed: bookOpen ? [] : [{}],
     heroCta: bookOpen ? [{ href: '/book/', label: bk.ctaLabel }] : [{ href: '/apply/', label: data.hero.cta }]
   }
@@ -230,7 +241,7 @@ const serviceNodes = data.rituals.map(r => {
     url: origin + '/ritual/#' + r.slug
   }
   // Бронирование показываем роботам только когда его действительно можно нажать
-  if (bookOpen && r.slug === bk.ritualSlug) node.potentialAction = {
+  if (bookOpen && (bk.doors || []).some(d => d.ritualSlug === r.slug && d.target === 'square')) node.potentialAction = {
     '@type': 'ReserveAction',
     target: { '@type': 'EntryPoint', urlTemplate: bk.url, actionPlatform: 'https://schema.org/DesktopWebPlatform' },
     result: { '@type': 'Reservation', name: r.name }
@@ -256,7 +267,7 @@ for (const a of data.answers) {
 }
 if (bookOpen) {
   page('book', '/book/', bk.title + ' — ' + b.name,
-    'Choose an evening for the dock session and pay online. Two hours, four rounds, one master.', serviceNodes)
+    'Two ways into the same ritual: take a set evening at the dock, or send a date for the ocean.', serviceNodes)
 }
 page('apply', '/apply/', 'Apply — ' + b.name, 'Send an application. A master replies to arrange a date.')
 page('pay', '/pay/', 'Payment — ' + b.name, 'Payment page for confirmed guests.', [], { noindex: true })

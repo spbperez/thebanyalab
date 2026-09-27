@@ -1,42 +1,30 @@
 {{> _head}}
 <section class="page-head">
-  <span class="lab">{{booking.ritualName}} · {{business.baseLocation}}</span>
+  <span class="lab">{{business.baseLocation}}</span>
   <h1>{{booking.title}}</h1>
   <p class="body">{{booking.intro}}</p>
 </section>
 
-<section class="split photo-right">
+{{#each computed.doors}}
+<section class="split door {{tone}} {{side}}" id="{{ritualSlug}}">
   <div class="text">
+    <span class="lab">{{lab}}</span>
+    <h2 style="margin:1.4rem 0 1.8rem">{{heading}}</h2>
+    <p class="body">{{body}}</p>
     <div class="prices">
-      {{#each computed.bookReadings}}<div><div class="amount">{{value}}</div><div class="lab lab-quiet">{{label}}</div></div>{{/each}}
+      {{#each readings}}<div><div class="amount">{{value}}</div><div class="lab lab-quiet">{{label}}</div></div>{{/each}}
     </div>
-    <span class="lab">What the evening includes</span>
-    <div style="margin-top:1.5rem">
-      {{#each booking.includes}}<div class="rule-item"><p class="body">{{this}}</p></div>{{/each}}
+    <div class="terms">{{#each points}}<p>{{this}}</p>{{/each}}</div>
+    <div class="book-act">
+      {{#each external}}<a class="btn btn-solid" href="{{href}}" rel="noopener">{{button}}</a>{{/each}}
+      {{#each internal}}<a class="btn btn-cold" href="{{href}}">{{button}}</a>{{/each}}
+      <span class="note">{{note}}</span>
     </div>
   </div>
   <div class="shot">
-    <img src="/assets/img/par.jpg" srcset="/assets/img/par-640.jpg 640w, /assets/img/par.jpg 1170w" sizes="(min-width:56rem) 50vw, 100vw" alt="A master working the steam with a venik" loading="lazy" width="1170" height="785">
+    <img src="{{photo.src}}" srcset="{{photo.small}} 640w, {{photo.src}} 1170w" sizes="(min-width:56rem) 50vw, 100vw" alt="{{photo.alt}}" loading="lazy" width="1170" height="785">
     <div class="grain"></div>
   </div>
 </section>
-
-<section class="band">
-  <span class="lab">How it goes</span>
-  <ol class="flow">{{#each booking.steps}}<li>{{this}}</li>{{/each}}</ol>
-</section>
-
-<section class="band">
-  <span class="lab">{{booking.policy.title}}</span>
-  <h2 style="margin:1.5rem 0 2.4rem">The rules, before the money.</h2>
-  {{#each booking.policy.items}}<div class="rule-item"><p class="body">{{this}}</p></div>{{/each}}
-  <div class="book-act">
-    <a class="btn btn-solid" href="{{booking.url}}" rel="noopener">{{booking.button}}</a>
-    <span class="note">{{booking.buttonNote}}</span>
-  </div>
-</section>
-
-<section class="band-plain">
-  <p class="src" style="max-width:52ch">{{booking.oceanNote}} <a href="/apply/">{{booking.oceanLabel}}</a>.</p>
-</section>
+{{/each}}
 {{> _footer}}

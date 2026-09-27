@@ -114,6 +114,8 @@
       "name": "The Lab Session",
       "applyLabel": "Apply for this session",
       "applyNote": "A master replies to arrange the date.",
+      "bookLabel": "Book this session",
+      "bookNote": "Set evenings, paid online.",
       "stage": "A sailing vessel in Ala Wai Harbor",
       "summary": "The full ritual, held at the dock. Small group, four rounds, two hours.",
       "flow": [
@@ -148,6 +150,8 @@
       "name": "The Ocean Session",
       "applyLabel": "Request an ocean date",
       "applyNote": "A date request, not a booking — the wind has the final word.",
+      "bookLabel": "Request a date",
+      "bookNote": "No calendar for the sea — the wind has the final word.",
       "stage": "Under sail, open Pacific",
       "summary": "The same ritual, taken out of the harbour. The cold plunge becomes the ocean.",
       "flow": [
@@ -506,40 +510,65 @@
     "provider": "Square",
     "url": null,
     "navLabel": "Book",
-    "ctaLabel": "Book an evening",
-    "readingLabels": [
-      "per person",
-      "four rounds",
-      "in the room"
-    ],
-    "title": "Book the pier session",
-    "ritualSlug": "lab-session",
-    "ritualName": "The Lab Session",
-    "intro": "The dock session keeps set evenings. Choose one, pay for it, and the time is yours — no messages back and forth.",
-    "button": "Open the calendar",
-    "buttonNote": "Payment and receipt come from the business, not from a person.",
-    "steps": [
-      "Pick an evening and a time that is open.",
-      "Say how many of you there are — one to four.",
-      "Pay in full. The card statement reads BANYA LAB.",
-      "A master writes before the session with what to bring."
-    ],
-    "includes": [
-      "Two hours, four rounds, one master working the room.",
-      "Venik, tea and water. Towels and a place to change.",
-      "Nothing else to pay on arrival."
-    ],
-    "policy": {
-      "title": "Before you book",
-      "items": [
-        "Move or cancel up to 48 hours before, and the payment comes back in full.",
-        "Inside 48 hours the evening is held for you and is not refunded — the master turns other guests away for it.",
-        "Come rested and fed, not full. No alcohol before a session.",
-        "Phones are surrendered at boarding. That part is not optional."
-      ]
-    },
-    "oceanNote": "Looking for the ocean session? That one has no calendar — the wind decides. Send a date and a master answers.",
-    "oceanLabel": "Request an ocean date"
+    "ctaLabel": "Book a session",
+    "title": "Two ways in",
+    "intro": "Both are the same ritual — heat, venik, cold, silence. What differs is who decides the date. The dock keeps set evenings, so you can simply take one. The sea does not, so you send a date and a master answers.",
+    "doors": [
+      {
+        "ritualSlug": "lab-session",
+        "tone": "warm",
+        "side": "photo-right",
+        "lab": "At the dock · take it",
+        "heading": "Choose an evening.",
+        "body": "The vessel stays at the pier, and the masters hold set evenings. The calendar you see is the calendar they keep. Pick a time, pay for it, and it is yours — no messages back and forth.",
+        "readingLabels": [
+          "per person",
+          "four rounds",
+          "in the room"
+        ],
+        "points": [
+          "Pay in full at booking. The card statement reads BANYA LAB.",
+          "Move or cancel up to 48 hours before and the payment comes back whole.",
+          "Inside 48 hours the evening is held for you and is not refunded — the master turns other guests away for it.",
+          "A master writes before the session with what to bring. Phones are surrendered at boarding."
+        ],
+        "button": "Open the calendar",
+        "note": "Payment and receipt come from the business, not from a person.",
+        "target": "square",
+        "photo": {
+          "src": "/assets/img/par.jpg",
+          "small": "/assets/img/par-640.jpg",
+          "alt": "A master working the steam with a venik"
+        }
+      },
+      {
+        "ritualSlug": "ocean-session",
+        "tone": "cold",
+        "side": "photo-left",
+        "lab": "Under sail · ask for it",
+        "heading": "Send a date.",
+        "body": "There is no calendar for the sea, and inventing one would be a lie. The outing depends on wind, light and the state of the boat, so a person decides it, not a form. Tell us the date you have in mind and a master answers.",
+        "readingLabels": [
+          "for the group",
+          "four rounds",
+          "on board"
+        ],
+        "points": [
+          "The date is a request. The wind has the final word, and it sometimes moves the evening.",
+          "Nothing is charged until you and a master have agreed the date.",
+          "Payment link comes from the business once the date holds.",
+          "Members of the Lab are asked first when a window opens."
+        ],
+        "button": "Request an ocean date",
+        "note": "A master replies in person, usually the same day.",
+        "target": "apply",
+        "photo": {
+          "src": "/assets/img/dive.jpg",
+          "small": "/assets/img/dive-640.jpg",
+          "alt": "A guest under the surface beside the hull"
+        }
+      }
+    ]
   },
   "pay": {
     "title": "Payment",

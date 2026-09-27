@@ -224,6 +224,20 @@ form.apply .send{display:flex;flex-wrap:wrap;align-items:center;gap:1.8rem}
 form.apply .note{font:400 .75rem/1.6 var(--mono);color:rgba(245,240,230,.35);max-width:26ch}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 
+/* ---------- развилка: две двери в один ритуал ---------- */
+.door .text{display:flex;flex-direction:column;justify-content:center}
+.terms{margin-top:2.2rem;max-width:44rem}
+.terms p{margin:0;padding:1rem 0;border-top:1px solid var(--hair);
+  font:400 .9375rem/1.6 var(--sans);color:rgba(245,240,230,.72)}
+.terms p:last-child{border-bottom:1px solid var(--hair)}
+.split.cold{background:var(--abyss);border-top-color:var(--hair-cold)}
+.split.cold h2{color:var(--cold-text)}
+.split.cold .body{color:var(--dim-cold)}
+.split.cold .lab{color:var(--cold)}
+.split.cold .lab-quiet{color:rgba(234,244,243,.42)}
+.split.cold .amount{color:var(--cold)}
+.split.cold .terms p{border-color:var(--hair-cold);color:rgba(234,244,243,.72)}
+
 /* ---------- строка действия: кнопка и тихая приписка ---------- */
 .book-act,.ritual-act{display:flex;flex-wrap:wrap;align-items:center;gap:1.6rem;margin-top:2.8rem}
 .book-act .note,.ritual-act .note{font:400 .75rem/1.6 var(--mono);color:rgba(245,240,230,.35);max-width:28ch}
