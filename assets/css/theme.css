@@ -209,14 +209,25 @@ form.apply{max-width:34rem;margin-top:2.4rem;display:grid;gap:2.2rem}
 form.apply .pair{display:grid;grid-template-columns:1fr;gap:2.2rem}
 form.apply label{display:block;font:500 .6875rem/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
   color:rgba(245,240,230,.45);margin-bottom:.7rem}
-form.apply input,form.apply textarea{width:100%;background:transparent;color:var(--steam);
+form.apply input,form.apply textarea,form.apply select{width:100%;background:transparent;color:var(--steam);
   border:0;border-bottom:1px solid rgba(196,154,92,.3);border-radius:0;padding:.4rem 0 .8rem;
   font:400 1.125rem/1.5 var(--sans)}
-form.apply input:focus,form.apply textarea:focus{border-bottom-color:var(--ember);outline:none}
+form.apply input:focus,form.apply textarea:focus,form.apply select:focus{border-bottom-color:var(--ember);outline:none}
+/* родной список у select рисует система — он светлый, поэтому текст в нём тёмный */
+form.apply select{appearance:none;-webkit-appearance:none;cursor:pointer;
+  background-image:linear-gradient(45deg,transparent 50%,var(--ember) 50%),linear-gradient(135deg,var(--ember) 50%,transparent 50%);
+  background-position:calc(100% - 9px) 1.05rem,calc(100% - 4px) 1.05rem;background-size:5px 5px,5px 5px;background-repeat:no-repeat;
+  padding-right:2rem}
+form.apply select option{color:#101010;background:var(--steam)}
 form.apply textarea{resize:vertical}
 form.apply .send{display:flex;flex-wrap:wrap;align-items:center;gap:1.8rem}
 form.apply .note{font:400 .75rem/1.6 var(--mono);color:rgba(245,240,230,.35);max-width:26ch}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* ---------- строка действия: кнопка и тихая приписка ---------- */
+.book-act,.ritual-act{display:flex;flex-wrap:wrap;align-items:center;gap:1.6rem;margin-top:2.8rem}
+.book-act .note,.ritual-act .note{font:400 .75rem/1.6 var(--mono);color:rgba(245,240,230,.35);max-width:28ch}
+.cold .ritual-act .note{color:rgba(234,244,243,.38)}
 
 /* ---------- подвал ---------- */
 footer.site{border-top:1px solid var(--hair);padding:var(--gap) var(--pad) 3rem;

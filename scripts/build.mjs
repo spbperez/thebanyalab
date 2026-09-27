@@ -173,14 +173,37 @@ const emit = (url, html) => {
   built.push(url)
 }
 
+// Календарь существует только если канал переключён на square И ссылка живая.
+// Пока нет хотя бы одного — страницы /book/ нет вовсе, а не пустая кнопка.
+const bk = data.booking
+const bookOpen = bk.channel === 'square' && !!bk.url
+const bkRitual = data.rituals.find(r => r.slug === bk.ritualSlug) || {}
+// цифры на /book/ берутся из самого ритуала: цена живёт в одном месте
+const bookReadings = [
+  (bkRitual.prices || [])[0]?.amount, bkRitual.duration, bkRitual.capacity
+].map((value, i) => ({ value, label: (bk.readingLabels || [])[i] })).filter(x => x.value)
+
+// Каждому ритуалу своя кнопка: пирс бронируется, море запрашивается (ТЗ 013)
+const rituals = data.rituals.map(r => ({
+  ...r,
+  cta: [bookOpen && r.slug === bk.ritualSlug
+    ? { href: '/book/', label: bk.ctaLabel, note: bk.buttonNote }
+    : { href: '/apply/', label: r.applyLabel, note: r.applyNote }]
+}))
+
 const base = {
   ...data,
+  rituals,
   computed: {
     origin, telHref, year: new Date().getFullYear(), buildDate: today,
     // пустой массив = строки контакта просто нет, а не пустая ссылка в подвале
     phoneLinks: b.phone ? [{ href: telHref, label: b.phoneDisplay || b.phone }] : [],
     applyForm: data.apply.channel === 'form' ? [{}] : [],
-    applyDM: data.apply.channel === 'form' ? [] : [{ url: b.instagram }]
+    applyDM: data.apply.channel === 'form' ? [] : [{ url: b.instagram }],
+    bookOpen: bookOpen ? [{ href: '/book/', label: bk.navLabel, url: bk.url }] : [],
+    bookReadings,
+    bookClosed: bookOpen ? [] : [{}],
+    heroCta: bookOpen ? [{ href: '/book/', label: bk.ctaLabel }] : [{ href: '/apply/', label: data.hero.cta }]
   }
 }
 
@@ -193,10 +216,27 @@ const page = (tplName, url, title, description, extraSchema = [], extra = {}) =>
   emit(url, render(fs.readFileSync(p('templates', tplName + '.html'), 'utf8'), ctx))
 }
 
-const serviceNodes = data.rituals.map(r => ({
-  '@type': 'Service', '@id': origin + '/ritual/#' + r.slug, name: r.name, description: r.summary,
-  serviceType: 'Russian banya ritual', provider: { '@id': origin + '/#business' }, areaServed: b.areaServed.join(', ')
-}))
+const serviceNodes = data.rituals.map(r => {
+  const node = {
+    '@type': 'Service', '@id': origin + '/ritual/#' + r.slug, name: r.name, description: r.summary,
+    serviceType: 'Russian banya ritual', provider: { '@id': origin + '/#business' }, areaServed: b.areaServed.join(', ')
+  }
+  // Offer только для точной суммы. Вилку «$1,000–1,200» в разметку не пишем:
+  // schema.org требует одно число, а выдумывать его за владельца нельзя.
+  const exact = (r.prices || []).map(x => /^\$(\d+)$/.exec(String(x.amount).replace(/,/g, ''))).find(Boolean)
+  if (exact) node.offers = {
+    '@type': 'Offer', price: exact[1], priceCurrency: 'USD',
+    availability: 'https://schema.org/LimitedAvailability',
+    url: origin + '/ritual/#' + r.slug
+  }
+  // Бронирование показываем роботам только когда его действительно можно нажать
+  if (bookOpen && r.slug === bk.ritualSlug) node.potentialAction = {
+    '@type': 'ReserveAction',
+    target: { '@type': 'EntryPoint', urlTemplate: bk.url, actionPlatform: 'https://schema.org/DesktopWebPlatform' },
+    result: { '@type': 'Reservation', name: r.name }
+  }
+  return node
+})
 
 page('index', '/', b.name + ' — ' + data.seo.titleSuffix, data.seo.description, serviceNodes)
 page('ritual', '/ritual/', 'The Two Rituals — ' + b.name, 'The Lab Session at the dock and the Ocean Session under sail. What happens, how long, what it costs.', serviceNodes)
@@ -213,6 +253,10 @@ for (const a of data.answers) {
     '@type': 'FAQPage', '@id': origin + '/answers/' + a.slug + '/#faq',
     mainEntity: [{ '@type': 'Question', name: a.question, acceptedAnswer: { '@type': 'Answer', text: [a.short, ...a.body].join(' ') } }]
   }], { answer: a })
+}
+if (bookOpen) {
+  page('book', '/book/', bk.title + ' — ' + b.name,
+    'Choose an evening for the dock session and pay online. Two hours, four rounds, one master.', serviceNodes)
 }
 page('apply', '/apply/', 'Apply — ' + b.name, 'Send an application. A master replies to arrange a date.')
 page('pay', '/pay/', 'Payment — ' + b.name, 'Payment page for confirmed guests.', [], { noindex: true })

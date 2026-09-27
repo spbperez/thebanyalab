@@ -17,6 +17,7 @@
     </div>
     <p class="body">{{minimum}}</p>
     <p class="lab lab-quiet">{{duration}} · {{capacity}}</p>
+    {{#each cta}}<div class="ritual-act"><a class="btn" href="{{href}}">{{label}}</a><span class="note">{{note}}</span></div>{{/each}}
   </div>
   <div class="shot">
     {{#each photos}}<img src="{{src}}" srcset="{{small}} 640w, {{src}} 1170w" sizes="(min-width:56rem) 50vw, 100vw" alt="{{alt}}" loading="lazy" width="1170" height="785">{{/each}}
@@ -28,6 +29,6 @@
 <section class="band">
   <span class="lab">The words we use</span>
   <dl class="vocab">{{#each vocabulary}}<dt>{{term}}</dt><dd>{{meaning}}</dd>{{/each}}</dl>
-  <p style="margin-top:2.6rem"><a class="btn" href="/apply/">Apply for a session</a></p>
+
 </section>
 {{> _footer}}

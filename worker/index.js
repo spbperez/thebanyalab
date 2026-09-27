@@ -53,6 +53,7 @@ async function handleLead (request, env) {
   const name = clean(form.get('name'), 80)
   const email = clean(form.get('email'), 120)
   const when = clean(form.get('when'), 120)
+  const ritual = clean(form.get('ritual'), 60)
   const message = clean(form.get('message'), 1200)
   const people = clean(form.get('people'), 3)
   const phone = toE164(clean(form.get('phone'), 30) || '')
@@ -67,6 +68,7 @@ async function handleLead (request, env) {
   const received = new Date().toLocaleString('en-US', { timeZone: 'Pacific/Honolulu' })
   const lines = [
     'NEW APPLICATION', '',
+    'Ritual:  ' + (ritual || '-'),
     'Name:    ' + name,
     'Phone:   ' + phone,
     'Email:   ' + email,

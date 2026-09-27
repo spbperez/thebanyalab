@@ -29,11 +29,14 @@
           <input id="f-email" name="email" type="email" autocomplete="email" required maxlength="120"></div>
       </div>
 
+      <div><label for="f-ritual">{{apply.fields.ritual}}</label>
+        <select id="f-ritual" name="ritual" required>{{#each apply.fields.ritualOptions}}<option value="{{this}}">{{this}}</option>{{/each}}</select></div>
+
       <div class="pair">
         <div><label for="f-people">{{apply.fields.people}}</label>
           <input id="f-people" name="people" type="number" min="1" max="8" step="1" required></div>
         <div><label for="f-when">{{apply.fields.when}}</label>
-          <input id="f-when" name="when" type="text" required maxlength="120" placeholder="Next week, evenings"></div>
+          <input id="f-when" name="when" type="text" required maxlength="120" placeholder="Oct 18, or any Friday evening"></div>
       </div>
 
       <div><label for="f-message">{{apply.fields.message}}</label>

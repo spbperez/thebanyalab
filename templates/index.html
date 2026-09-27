@@ -11,7 +11,7 @@
     <hr>
     <div class="row">
       {{#each hero.readings}}<div><div class="figure">{{value}}</div><div class="lab lab-quiet">{{label}}</div></div>{{/each}}
-      <div class="act"><a class="btn" href="/apply/">{{hero.cta}}</a></div>
+      <div class="act">{{#each computed.heroCta}}<a class="btn" href="{{href}}">{{label}}</a>{{/each}}</div>
     </div>
   </div>
 </section>

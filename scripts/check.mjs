@@ -151,6 +151,21 @@ for (const { file, html } of all) {
 saunaIssues.length ? saunaIssues.slice(0, 6).forEach(d => fail('своё не называем sauna', d))
                    : ok.push('своё не называем sauna')
 
+/* 13. Бронирование: канал и страница не расходятся (ТЗ 013).
+   Календарь либо есть целиком, либо его нет вовсе — кнопки в пустоту не бывает. */
+const bk = data.booking || {}
+const bookPage = fs.existsSync(p('site/book/index.html'))
+const navHasBook = all.some(({ html }) => /<a class="cta" href="\/book\/"/.test(html))
+if (bk.channel === 'square' && !bk.url) {
+  fail('бронирование настроено', 'booking.channel = square, но booking.url пуст — вставь ссылку Square или верни channel в apply')
+} else if (bk.channel === 'square' && !bookPage) {
+  fail('бронирование настроено', 'канал square, а страницы site/book/ нет — забыл npm run build')
+} else if (bk.channel !== 'square' && (bookPage || navHasBook)) {
+  fail('бронирование настроено', 'канал не square, но /book/ всё равно собрана или стоит в навигации')
+} else {
+  ok.push(bk.channel === 'square' ? 'бронирование: календарь Square подключён' : 'бронирование: канал — заявка, /book/ нет')
+}
+
 /* Отчёт */
 console.log('')
 for (const o of ok) console.log('  ok    ' + o)

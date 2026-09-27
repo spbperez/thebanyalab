@@ -10,9 +10,11 @@
     "business.address.zip",
     "business.hours",
     "business.phone",
-    "business.phoneDisplay"
+    "business.phoneDisplay",
+    "booking.url"
   ],
   "_optionalWhy": {
+    "booking.url": "аккаунта Square ещё нет; пока booking.channel стоит в apply, страница /book/ не собирается и кнопки Book на сайте нет — см. ТЗ 013",
     "business.gbpName": "профиля в Google ещё нет — появится, тогда сверка NAP включится сама",
     "business.gbpUrl": "то же",
     "business.reviewsUrl": "отзывов нет; пока пусто, aggregateRating в разметке запрещён",
@@ -110,6 +112,8 @@
     {
       "slug": "lab-session",
       "name": "The Lab Session",
+      "applyLabel": "Apply for this session",
+      "applyNote": "A master replies to arrange the date.",
       "stage": "A sailing vessel in Ala Wai Harbor",
       "summary": "The full ritual, held at the dock. Small group, four rounds, two hours.",
       "flow": [
@@ -142,6 +146,8 @@
     {
       "slug": "ocean-session",
       "name": "The Ocean Session",
+      "applyLabel": "Request an ocean date",
+      "applyNote": "A date request, not a booking — the wind has the final word.",
       "stage": "Under sail, open Pacific",
       "summary": "The same ritual, taken out of the harbour. The cold plunge becomes the ocean.",
       "flow": [
@@ -196,8 +202,8 @@
   "guild": "Our masters are Russian and Ukrainian. They share a craft older than any border. We honour the craft, not any state, and we say that openly.",
   "access": [
     {
-      "title": "Apply, do not book",
-      "body": "There are no walk-ins and no open calendar. Every session starts with a message. The application is a filter that protects both sides."
+      "title": "Book the pier. Apply for the sea.",
+      "body": "The dock session keeps set evenings, and you can take one. The ocean keeps none: it moves with the wind, the light and the boat, so it goes by application only. There are no walk-ins either way."
     },
     {
       "title": "Digital surrender",
@@ -470,13 +476,18 @@
   ],
   "apply": {
     "title": "Apply",
-    "intro": "Tell us who you are and roughly when suits you. A master replies to arrange the date. Nothing is charged until you have agreed it.",
+    "intro": "This is where the ocean session starts. Tell us who you are and the date you have in mind — it is a request, not a booking: the sea decides, and a master writes back to settle it. Nothing is charged until you have agreed the date.",
     "fields": {
       "name": "Your name",
       "phone": "Phone",
       "email": "Email",
       "people": "How many people",
-      "when": "When suits you",
+      "ritual": "Which ritual",
+      "ritualOptions": [
+        "Ocean Session — under sail",
+        "Lab Session — at the dock"
+      ],
+      "when": "Preferred date, or roughly when",
       "message": "Anything we should know"
     },
     "consent": "We use this to reply to you about a session. Nothing else.",
@@ -485,10 +496,50 @@
     "dm": {
       "title": "Apply",
       "heading": "Send us a message.",
-      "intro": "Applications come through Instagram, the way they always have. Tell us your name, how many of you there are and roughly when suits you. A master replies to arrange the date, and nothing is charged until you have agreed it.",
+      "intro": "Applications come through Instagram, the way they always have. Tell us your name, how many of you there are, which ritual you want and the date you have in mind. For the ocean that date is a request and not a booking — the wind has the final word. A master replies to settle it, and nothing is charged until you have agreed it.",
       "button": "Apply on Instagram",
       "note": "A booking form lands here shortly. Until then a message reaches a person faster than any form would."
     }
+  },
+  "booking": {
+    "channel": "apply",
+    "provider": "Square",
+    "url": null,
+    "navLabel": "Book",
+    "ctaLabel": "Book an evening",
+    "readingLabels": [
+      "per person",
+      "four rounds",
+      "in the room"
+    ],
+    "title": "Book the pier session",
+    "ritualSlug": "lab-session",
+    "ritualName": "The Lab Session",
+    "intro": "The dock session keeps set evenings. Choose one, pay for it, and the time is yours — no messages back and forth.",
+    "button": "Open the calendar",
+    "buttonNote": "Payment and receipt come from the business, not from a person.",
+    "steps": [
+      "Pick an evening and a time that is open.",
+      "Say how many of you there are — one to four.",
+      "Pay in full. The card statement reads BANYA LAB.",
+      "A master writes before the session with what to bring."
+    ],
+    "includes": [
+      "Two hours, four rounds, one master working the room.",
+      "Venik, tea and water. Towels and a place to change.",
+      "Nothing else to pay on arrival."
+    ],
+    "policy": {
+      "title": "Before you book",
+      "items": [
+        "Move or cancel up to 48 hours before, and the payment comes back in full.",
+        "Inside 48 hours the evening is held for you and is not refunded — the master turns other guests away for it.",
+        "Come rested and fed, not full. No alcohol before a session.",
+        "Phones are surrendered at boarding. That part is not optional."
+      ]
+    },
+    "oceanNote": "Looking for the ocean session? That one has no calendar — the wind decides. Send a date and a master answers.",
+    "oceanLabel": "Request an ocean date"
   },
   "pay": {
     "title": "Payment",
