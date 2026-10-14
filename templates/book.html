@@ -14,6 +14,8 @@
     <div class="prices">
       {{#each readings}}<div><div class="amount">{{value}}</div><div class="lab lab-quiet">{{label}}</div></div>{{/each}}
     </div>
+    <div class="hours-line">{{#each hours}}<div><div class="figure">{{display}}</div><div class="lab lab-quiet">{{label}}</div></div>{{/each}}</div>
+    {{#each hoursNote}}<p class="src" style="margin-top:1.1rem;max-width:46ch">{{text}}</p>{{/each}}
     <div class="terms">{{#each points}}<p>{{this}}</p>{{/each}}</div>
     <div class="book-act">
       {{#each external}}<a class="btn btn-solid" href="{{href}}" rel="noopener">{{button}}</a>{{/each}}

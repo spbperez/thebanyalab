@@ -17,6 +17,9 @@
       <a href="{{business.instagram}}" rel="noopener">Instagram</a>
       {{#each computed.phoneLinks}}<a href="{{href}}">{{label}}</a>{{/each}}
     </div>
+    <div>
+      {{#each business.hours}}<span>{{label}} · {{display}}</span>{{/each}}
+    </div>
   </nav>
 </footer>
 </body>

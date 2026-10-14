@@ -188,7 +188,10 @@ const doors = (bk.doors || []).map(d => {
     external: d.target === 'square' ? [{}] : [],
     internal: d.target === 'square' ? [] : [{}],
     readings: [(r.prices || [])[0]?.amount, r.duration, r.capacity]
-      .map((value, i) => ({ value, label: (d.readingLabels || [])[i] })).filter(x => x.value)
+      .map((value, i) => ({ value, label: (d.readingLabels || [])[i] })).filter(x => x.value),
+    // расписание есть только у пирса — у моря его нет по устройству бизнеса
+    hours: d.target === 'square' ? (b.hours || []) : [],
+    hoursNote: d.target === 'square' && b.hoursNote ? [{ text: b.hoursNote }] : []
   }
 })
 

@@ -7,24 +7,16 @@
     "business.legalName",
     "business.email",
     "business.address.street",
-    "business.address.zip",
-    "business.hours",
-    "business.phone",
-    "business.phoneDisplay",
-    "booking.url"
+    "business.address.zip"
   ],
   "_optionalWhy": {
-    "booking.url": "аккаунта Square ещё нет; пока booking.channel стоит в apply, страница /book/ не собирается и кнопки Book на сайте нет — см. ТЗ 013",
     "business.gbpName": "профиля в Google ещё нет — появится, тогда сверка NAP включится сама",
     "business.gbpUrl": "то же",
     "business.reviewsUrl": "отзывов нет; пока пусто, aggregateRating в разметке запрещён",
     "business.legalName": "нигде не выводится, нужен только для записей",
     "business.email": "контакт — телефон и форма; почта владельца живёт в переменных окружения",
     "business.address.street": "адрес намеренно скрыт: лодка в марине, не адрес приёма",
-    "business.address.zip": "то же",
-    "business.hours": "часов приёма нет по устройству бизнеса: сессии по заявке, а не по расписанию",
-    "business.phone": "номера ещё нет; главное действие на сайте — Apply, телефон появится в подвале и в разметке, как только придёт",
-    "business.phoneDisplay": "то же"
+    "business.address.zip": "то же"
   },
   "business": {
     "name": "The Banya Lab",
@@ -33,8 +25,8 @@
     "tagline": "Heat. Water. Silence. Renew.",
     "oneLine": "Authentic Russian banya. Not a sauna.",
     "shortDescription": "Banya is the Russian heat ritual — a thousand years old, practiced by masters with oak branches, wet steam and cold water. We brought it to Hawaii.",
-    "phone": null,
-    "phoneDisplay": null,
+    "phone": "+18087661512",
+    "phoneDisplay": "(808) 766-1512",
     "email": null,
     "instagram": "https://instagram.com/banya_lab_hawaii",
     "gbpUrl": null,
@@ -54,7 +46,23 @@
       "Honolulu",
       "Oahu"
     ],
-    "hours": null,
+    "hours": [
+      {
+        "days": ["Monday", "Thursday", "Friday"],
+        "opens": "17:00",
+        "closes": "21:00",
+        "label": "Mon · Thu · Fri",
+        "display": "5 – 9 PM"
+      },
+      {
+        "days": ["Tuesday"],
+        "opens": "19:00",
+        "closes": "21:00",
+        "label": "Tue",
+        "display": "7 – 9 PM"
+      }
+    ],
+    "hoursNote": "Closed Wednesday, Saturday and Sunday. The last session starts two hours before close.",
     "foundedYear": 2026,
     "priceRange": "$$",
     "schemaType": "HealthAndBeautyBusiness"
