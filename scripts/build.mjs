@@ -273,7 +273,6 @@ if (bookOpen) {
     'Two ways into the same ritual: take a set evening at the dock, or send a date for the ocean.', serviceNodes)
 }
 page('apply', '/apply/', 'Apply — ' + b.name, 'Send an application. A master replies to arrange a date.')
-page('pay', '/pay/', 'Payment — ' + b.name, 'Payment page for confirmed guests.', [], { noindex: true })
 page('thanks', '/thanks/', 'Received — ' + b.name, 'Your application has been received.', [], { noindex: true })
 
 /* ---------- 7. Статика ---------- */
@@ -288,12 +287,12 @@ copyDir(p('assets'), path.join(OUT, 'assets'))
 
 fs.writeFileSync(path.join(OUT, 'robots.txt'),
   data.aiCrawlers.map(a => `User-agent: ${a}\nAllow: /\n`).join('\n') +
-  `\nUser-agent: *\nAllow: /\nDisallow: /pay/\nDisallow: /thanks/\n` +
+  `\nUser-agent: *\nAllow: /\nDisallow: /thanks/\n` +
   (origin ? `\nSitemap: ${origin}/sitemap.xml\n` : '\n'))
 
 fs.writeFileSync(path.join(OUT, 'sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
-  built.filter(u => !['/pay/', '/thanks/'].includes(u))
+  built.filter(u => !['/thanks/'].includes(u))
     .map(u => `  <url><loc>${origin}${u}</loc><lastmod>${today}</lastmod></url>`).join('\n') +
   `\n</urlset>\n`)
 

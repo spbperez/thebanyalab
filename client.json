@@ -578,12 +578,6 @@
       }
     ]
   },
-  "pay": {
-    "title": "Payment",
-    "intro": "This page is for guests whose date is already confirmed. Payment goes to the business and produces a receipt.",
-    "links": [],
-    "note": "If you have not spoken to a master yet, start with an application."
-  },
   "thanks": {
     "title": "Received",
     "body": "A master will come back to you shortly to arrange a date. Nothing is charged until you have agreed it."
