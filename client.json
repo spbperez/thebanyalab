@@ -476,13 +476,13 @@
     {
       "slug": "how-do-i-book-and-pay",
       "question": "How do I book, and how do I pay?",
-      "short": "Send an application through this site. A master replies, confirms a date with you, and sends a payment link from the business — card, receipt, no cash in an envelope.",
+      "short": "For the dock session you pick an open evening and pay for it on the spot — card, receipt from the business, confirmation in your inbox. The ocean session has no calendar: you send a date and a master answers.",
       "body": [
-        "There is no open calendar on this site, on purpose. Sessions are small, the masters are few, and the ocean has an opinion about the schedule. So you send an application with roughly when suits you and how many of you there are, and a master comes back to you with a time.",
-        "Once the time is agreed you get a payment link. It is a card payment to the business, it produces a real receipt, and you can pay for yourself and for the people you are bringing in one go. Nothing is charged before a human has confirmed your date.",
-        "If you want to give a session to someone else, say so in the application and we will send the same link with a note instead of a date."
+        "The two rituals are booked differently, and the reason is not policy but weather. The vessel stays at the pier for the dock session, so the masters hold set evenings and you can simply take one: choose the time, say how many of you there are, and pay for it. The ocean session leaves the harbour, and that depends on wind, light and the state of the boat — no calendar could tell you the truth about it, so a person does.",
+        "Payment is a card payment to the business, not to a person: the statement reads BANYA LAB and a real receipt lands in your inbox. At the dock you pay in full when you book, for yourself and for everyone you bring, in one go. For the ocean nothing is charged until you and a master have agreed the date — the invoice comes after that.",
+        "Plans change. Move or cancel a dock session more than two days ahead and the payment comes back in full; inside two days the evening is held for you and the master turns other guests away for it. If we are the ones who move your session — weather, the boat — you pick a new date or take the money back, your choice."
       ],
-      "updated": "2026-09-02",
+      "updated": "2026-10-14",
       "sources": []
     }
   ],
@@ -693,10 +693,10 @@
     }
   ],
   "closing": {
-    "eyebrow": "By application only",
+    "eyebrow": "The dock by the hour. The sea by the wind.",
     "line1": "Heat. Water.",
     "line2": "Silence. Return.",
-    "body": "Tell us who you are and roughly when suits you. A master replies to arrange the date. Nothing is charged until you have agreed it.",
+    "body": "Take one of the set evenings at the dock, or send a date for the ocean and a master will answer. Either way a person is waiting for you at the end of it.",
     "photo": {
       "src": "/assets/img/dive.jpg",
       "small": "/assets/img/dive-640.jpg",
