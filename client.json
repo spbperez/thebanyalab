@@ -506,9 +506,9 @@
     }
   },
   "booking": {
-    "channel": "apply",
+    "channel": "square",
     "provider": "Square",
-    "url": null,
+    "url": "https://book.squareup.com/appointments/bqd1gpkmvgqvml/location/LHR3TPVH414E7",
     "navLabel": "Book",
     "ctaLabel": "Book a session",
     "title": "Two ways in",
